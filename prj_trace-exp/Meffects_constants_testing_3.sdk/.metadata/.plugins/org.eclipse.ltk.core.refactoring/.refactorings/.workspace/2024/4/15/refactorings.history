@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete 3 resources" deleteContents="true" description="Delete 3 resources" element1="/effects_loop_wrapper_hw_platform_0" element2="/effects_loop_wrapper_hw_platform_1" element3="/standalone_bsp_0" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="3" stamp="1712493009589"/>&#x0A;<refactoring comment="Delete resource &apos;effects_loop_wrapper_hw_platform_0&apos;" deleteContents="true" description="Delete resource &apos;effects_loop_wrapper_hw_platform_0&apos;" element1="/effects_loop_wrapper_hw_platform_0" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1712548242698"/>
+</session>

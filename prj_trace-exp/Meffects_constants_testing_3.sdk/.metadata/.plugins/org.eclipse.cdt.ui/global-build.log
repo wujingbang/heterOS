@@ -1,0 +1,663 @@
+15:43:07 **** Clean-only build of configuration Debug for project audio_app_trace ****
+make clean 
+rm -rf  ./src/audio.d ./src/circularBuffer.d ./src/main.d  ./src/audio.o ./src/circularBuffer.o ./src/main.o  audio_app_trace.elf.size  audio_app_trace.elf
+' '
+15:43:07 **** Clean-only build of project standalone_bsp_0 ****
+make -k clean 
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src -s clean 
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s clean 
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s clean 
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s clean 
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s clean 
+make -C ps7_cortexa9_0/libsrc/emacps_v3_9/src -s clean 
+make -C ps7_cortexa9_0/libsrc/fft_ctrl_v1_0/src -s clean 
+rm: lstat¡®*.o¡¯Ê§°Ü: Invalid argument
+make[1]: *** [Makefile:26: clean] Error 1
+make: *** [Makefile:33: ps7_cortexa9_0/libsrc/fft_ctrl_v1_0/src/make.clean] Error 2
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_5/src -s clean 
+make -C ps7_cortexa9_0/libsrc/iicps_v3_9/src -s clean 
+make -C ps7_cortexa9_0/libsrc/lwip211_v1_0/src -s clean 
+make -C ps7_cortexa9_0/libsrc/mcdma_v1_3/src -s clean 
+make -C ps7_cortexa9_0/libsrc/qspips_v3_6/src -s clean 
+make -C ps7_cortexa9_0/libsrc/scugic_v4_0/src -s clean 
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s clean 
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s clean 
+make -C ps7_cortexa9_0/libsrc/sdps_v3_7/src -s clean 
+make -C ps7_cortexa9_0/libsrc/standalone_v7_0/src -s clean 
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_9/src -s clean 
+make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s clean 
+make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s clean 
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s clean 
+make -C ps7_cortexa9_0/libsrc/xilffs_v4_1/src -s clean 
+make: Target 'clean' not remade because of errors.
+15:43:07 **** Build of project standalone_bsp_0 ****
+make -k all 
+"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/emacps_v3_9/src"
+make -C ps7_cortexa9_0/libsrc/emacps_v3_9/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/fft_ctrl_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/fft_ctrl_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/gpiops_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/iicps_v3_9/src"
+make -C ps7_cortexa9_0/libsrc/iicps_v3_9/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/lwip211_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/lwip211_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/mcdma_v1_3/src"
+make -C ps7_cortexa9_0/libsrc/mcdma_v1_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/qspips_v3_6/src"
+make -C ps7_cortexa9_0/libsrc/qspips_v3_6/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scugic_v4_0/src"
+make -C ps7_cortexa9_0/libsrc/scugic_v4_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/sdps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/sdps_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/standalone_v7_0/src"
+make -C ps7_cortexa9_0/libsrc/standalone_v7_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/ttcps_v3_9/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_9/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/uartps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/usbps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_3/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/xilffs_v4_1/src"
+make -C ps7_cortexa9_0/libsrc/xilffs_v4_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling coresightps_dcc"
+"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling cpu_cortexa9"
+"Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling ddrps"
+"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling devcfg"
+"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling dmaps"
+"Running Make libs in ps7_cortexa9_0/libsrc/emacps_v3_9/src"
+make -C ps7_cortexa9_0/libsrc/emacps_v3_9/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling emacps"
+"Running Make libs in ps7_cortexa9_0/libsrc/fft_ctrl_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/fft_ctrl_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling fft_ctrl..."
+fft_ctrl_selftest.c: In function 'FFT_CTRL_Reg_SelfTest':
+fft_ctrl_selftest.c:52:57: warning: comparison of integer expressions of different signedness: 'u32' {aka 'long unsigned int'} and 'int' [-Wsign-compare]
+    if ( FFT_CTRL_mReadReg (baseaddr, read_loop_index*4) != (read_loop_index+1)*READ_WRITE_MUL_FACTOR){
+                                                         ^~
+fft_ctrl_selftest.c:36:6: warning: unused variable 'Index' [-Wunused-variable]
+  int Index;
+      ^~~~~
+"Running Make libs in ps7_cortexa9_0/libsrc/gpiops_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling gpiops"
+"Running Make libs in ps7_cortexa9_0/libsrc/iicps_v3_9/src"
+make -C ps7_cortexa9_0/libsrc/iicps_v3_9/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling iicps"
+"Running Make libs in ps7_cortexa9_0/libsrc/lwip211_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/lwip211_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling lwip src and adapter files"
+In file included from ../../../include/xemacps.h:349,
+                 from ../../../include/netif/xemacpsif.h:57,
+                 from contrib/ports/xilinx/netif/xemacpsif_dma.c:37:
+contrib/ports/xilinx/netif/xemacpsif_dma.c: In function 'init_dma':
+../../../include/xemacps_hw.h:611:23: warning: 'bdrxterminate' may be used uninitialized in this function [-Wmaybe-uninitialized]
+ #define XEmacPs_Out32 Xil_Out32
+                       ^~~~~~~~~
+contrib/ports/xilinx/netif/xemacpsif_dma.c:561:14: note: 'bdrxterminate' was declared here
+  XEmacPs_Bd *bdrxterminate;
+              ^~~~~~~~~~~~~
+In file included from ../../../include/xemacps.h:350,
+                 from ../../../include/netif/xemacpsif.h:57,
+                 from contrib/ports/xilinx/netif/xemacpsif_dma.c:37:
+../../../include/xemacps_bd.h:142:12: warning: 'bdtxterminate' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  (*(u32 *)((UINTPTR)((void*)(BaseAddress)) + (u32)(Offset)))
+            ^
+contrib/ports/xilinx/netif/xemacpsif_dma.c:560:14: note: 'bdtxterminate' was declared here
+  XEmacPs_Bd *bdtxterminate;
+              ^~~~~~~~~~~~~
+"Running Make libs in ps7_cortexa9_0/libsrc/mcdma_v1_3/src"
+make -C ps7_cortexa9_0/libsrc/mcdma_v1_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling mcdma"
+"Running Make libs in ps7_cortexa9_0/libsrc/qspips_v3_6/src"
+make -C ps7_cortexa9_0/libsrc/qspips_v3_6/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling qspips"
+"Running Make libs in ps7_cortexa9_0/libsrc/scugic_v4_0/src"
+make -C ps7_cortexa9_0/libsrc/scugic_v4_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling scugic"
+"Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling scutimer"
+"Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling scuwdt"
+"Running Make libs in ps7_cortexa9_0/libsrc/sdps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/sdps_v3_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling sdps"
+"Running Make libs in ps7_cortexa9_0/libsrc/standalone_v7_0/src"
+make -C ps7_cortexa9_0/libsrc/standalone_v7_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling standalone"
+In file included from usleep.c:56:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from xil_sleeptimer.c:51:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from xtime_l.c:49:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from sleep.c:53:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+"Running Make libs in ps7_cortexa9_0/libsrc/ttcps_v3_9/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_9/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling ttcps"
+"Running Make libs in ps7_cortexa9_0/libsrc/uartps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling uartps"
+"Running Make libs in ps7_cortexa9_0/libsrc/usbps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling usbps"
+"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_3/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling xadcps"
+"Running Make libs in ps7_cortexa9_0/libsrc/xilffs_v4_1/src"
+make -C ps7_cortexa9_0/libsrc/xilffs_v4_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling XilFFs Library"
+'Finished building libraries'
+15:43:28 **** Auto Build of configuration Debug for project lwip ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/i2c_access.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/i2c_access.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/i2c_access.d" -MT"src/i2c_access.o" -o "src/i2c_access.o" "../src/i2c_access.c"
+'Finished building: ../src/i2c_access.c'
+' '
+'Building file: ../src/iic_phyreset.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/iic_phyreset.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/iic_phyreset.d" -MT"src/iic_phyreset.o" -o "src/iic_phyreset.o" "../src/iic_phyreset.c"
+'Finished building: ../src/iic_phyreset.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/platform_zynq.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynq.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/platform_zynq.d" -MT"src/platform_zynq.o" -o "src/platform_zynq.o" "../src/platform_zynq.c"
+'Finished building: ../src/platform_zynq.c'
+' '
+'Building file: ../src/platform_zynqmp.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynqmp.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/platform_zynqmp.d" -MT"src/platform_zynqmp.o" -o "src/platform_zynqmp.o" "../src/platform_zynqmp.c"
+'Finished building: ../src/platform_zynqmp.c'
+' '
+'Building file: ../src/sfp.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sfp.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/sfp.d" -MT"src/sfp.o" -o "src/sfp.o" "../src/sfp.c"
+'Finished building: ../src/sfp.c'
+' '
+'Building file: ../src/si5324.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/si5324.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/si5324.d" -MT"src/si5324.o" -o "src/si5324.o" "../src/si5324.c"
+'Finished building: ../src/si5324.c'
+' '
+'Building target: lwip.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "lwip.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+'Finished building target: lwip.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size lwip.elf  |tee "lwip.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 109204	   3432	2218304	2330940	 23913c	lwip.elf
+'Finished building: lwip.elf.size'
+' '
+15:43:30 **** Auto Build of configuration Debug for project fsbl ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/fsbl_hooks.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/fsbl_hooks.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/fsbl_hooks.d" -MT"src/fsbl_hooks.o" -o "src/fsbl_hooks.o" "../src/fsbl_hooks.c"
+'Finished building: ../src/fsbl_hooks.c'
+' '
+'Building file: ../src/image_mover.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/image_mover.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/image_mover.d" -MT"src/image_mover.o" -o "src/image_mover.o" "../src/image_mover.c"
+'Finished building: ../src/image_mover.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/main.c:137:
+../../standalone_bsp_0/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/md5.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/md5.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/md5.d" -MT"src/md5.o" -o "src/md5.o" "../src/md5.c"
+'Finished building: ../src/md5.c'
+' '
+'Building file: ../src/nand.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/nand.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/nand.d" -MT"src/nand.o" -o "src/nand.o" "../src/nand.c"
+'Finished building: ../src/nand.c'
+' '
+'Building file: ../src/nor.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/nor.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/nor.d" -MT"src/nor.o" -o "src/nor.o" "../src/nor.c"
+'Finished building: ../src/nor.c'
+' '
+'Building file: ../src/pcap.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/pcap.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/pcap.d" -MT"src/pcap.o" -o "src/pcap.o" "../src/pcap.c"
+In file included from ../src/pcap.c:100:
+../../standalone_bsp_0/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/pcap.c'
+' '
+'Building file: F:/work/gitea/heterOS/prj_trace-exp/Meffects_constants_testing_3.sdk/effects_loop_wrapper_hw_platform_0/ps7_init.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/ps7_init.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/ps7_init.d" -MT"src/ps7_init.o" -o "src/ps7_init.o" "F:/work/gitea/heterOS/prj_trace-exp/Meffects_constants_testing_3.sdk/effects_loop_wrapper_hw_platform_0/ps7_init.c"
+'Finished building: F:/work/gitea/heterOS/prj_trace-exp/Meffects_constants_testing_3.sdk/effects_loop_wrapper_hw_platform_0/ps7_init.c'
+' '
+'Building file: ../src/qspi.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/qspi.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/qspi.d" -MT"src/qspi.o" -o "src/qspi.o" "../src/qspi.c"
+'Finished building: ../src/qspi.c'
+' '
+'Building file: ../src/sd.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -I"F:\work\gitea\heterOS\prj_trace-exp\Meffects_constants_testing_3.sdk\effects_loop_wrapper_hw_platform_0" -c -fmessage-length=0 -MT"src/sd.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/sd.d" -MT"src/sd.o" -o "src/sd.o" "../src/sd.c"
+'Finished building: ../src/sd.c'
+' '
+'Building target: fsbl.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "fsbl.elf"  ./src/fsbl_handoff.o ./src/fsbl_hooks.o ./src/image_mover.o ./src/main.o ./src/md5.o ./src/nand.o ./src/nor.o ./src/pcap.o ./src/ps7_init.o ./src/qspi.o ./src/rsa.o ./src/sd.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+'Finished building target: fsbl.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size fsbl.elf  |tee "fsbl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89608	  11712	  75384	 176704	  2b240	fsbl.elf
+'Finished building: fsbl.elf.size'
+' '
+15:43:31 **** Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/audio.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../standalone_bsp_0/ps7_cortexa9_0/include -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\arm-none-eabi\thumb" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\backward" -c -fmessage-length=0 -MT"src/audio.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/audio.d" -MT"src/audio.o" -o "src/audio.o" "../src/audio.cc"
+In file included from ../src/audio.cc:1:
+../src/headers.h:51:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+../src/audio.cc: In function 'void AudioWriteToReg(unsigned char, unsigned char)':
+../src/audio.cc:156:6: warning: unused variable 'status' [-Wunused-variable]
+  int status = XIicPs_MasterSendPolled(&Iic, u8TxData, 3, (IIC_SLAVE_ADDR >> 1));
+      ^~~~~~
+'Finished building: ../src/audio.cc'
+' '
+'Building file: ../src/circularBuffer.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../standalone_bsp_0/ps7_cortexa9_0/include -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\arm-none-eabi\thumb" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\backward" -c -fmessage-length=0 -MT"src/circularBuffer.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/circularBuffer.d" -MT"src/circularBuffer.o" -o "src/circularBuffer.o" "../src/circularBuffer.cc"
+In file included from ../src/circularBuffer.cc:7:
+../src/headers.h:51:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+'Finished building: ../src/circularBuffer.cc'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../standalone_bsp_0/ps7_cortexa9_0/include -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\arm-none-eabi\thumb" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\backward" -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+In file included from ../src/main.cc:1:
+../src/headers.h:51:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+../src/main.cc: In function 'int TxSetup(XMcdma*)':
+../src/main.cc:129:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i, j;
+      ^
+../src/main.cc:129:9: warning: unused variable 'j' [-Wunused-variable]
+  u32 i, j;
+         ^
+../src/main.cc:130:6: warning: unused variable 'buf_align' [-Wunused-variable]
+  u32 buf_align;
+      ^~~~~~~~~
+../src/main.cc: In function 'int RxSetup(XMcdma*)':
+../src/main.cc:176:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i, j;
+      ^
+../src/main.cc:176:9: warning: unused variable 'j' [-Wunused-variable]
+  u32 i, j;
+         ^
+../src/main.cc:177:6: warning: unused variable 'buf_align' [-Wunused-variable]
+  u32 buf_align;
+      ^~~~~~~~~
+../src/main.cc: In function 'int CheckData(u8*, int, u32)':
+../src/main.cc:234:23: warning: comparison of integer expressions of different signedness: 'u32' {aka 'long unsigned int'} and 'int' [-Wsign-compare]
+  for(Index = 0; Index < ByteCount; Index++) {
+                 ~~~~~~^~~~~~~~~~~
+In file included from ../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma.h:155,
+                 from ../src/headers.h:23,
+                 from ../src/main.cc:1:
+../src/main.cc: In function 'int CheckDmaResult(XMcdma*, u32)':
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:102:45: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+  (*(u64 *)(((void *)(UINTPTR)(BaseAddress)) + (u32)(Offset)))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../src/main.cc:272:19: note: in expansion of macro 'XMcdma_BdRead64'
+  RxPacket = (u8 *)XMcdma_BdRead64(BdPtr1, XMCDMA_BD_BUFA_OFFSET);
+                   ^~~~~~~~~~~~~~~
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:84:45: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+  (*(u32 *)(((void *)(UINTPTR)(BaseAddress)) + (u32)(Offset)))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:201:3: note: in expansion of macro 'XMcdma_BdRead'
+  (XMcdma_BdRead((BdPtr), XMCDMA_BD_STS_OFFSET) & \
+   ^~~~~~~~~~~~~
+../src/main.cc:273:19: note: in expansion of macro 'XMcDma_BdGetActualLength'
+  RxPacketLength = XMcDma_BdGetActualLength(BdPtr1, MaxTransferBytes);
+                   ^~~~~~~~~~~~~~~~~~~~~~~~
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:102:45: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+  (*(u64 *)(((void *)(UINTPTR)(BaseAddress)) + (u32)(Offset)))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../src/main.cc:284:27: note: in expansion of macro 'XMcdma_BdRead64'
+    BdPtr1 = (XMcdma_Bd *) XMcdma_BdRead64(BdPtr1, XMCDMA_BD_NDESC_OFFSET);
+                           ^~~~~~~~~~~~~~~
+../src/main.cc: In function 'UINTPTR getBatchSample(XMcdma*)':
+../src/main.cc:293:6: warning: unused variable 'Status' [-Wunused-variable]
+  int Status;
+      ^~~~~~
+../src/main.cc:298:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i;
+      ^
+../src/main.cc:299:6: warning: variable 'Chan_SerMask' set but not used [-Wunused-but-set-variable]
+  u32 Chan_SerMask;
+      ^~~~~~~~~~~~
+../src/main.cc: In function 'int main()':
+../src/main.cc:388:9: warning: unused variable 'tmpptr' [-Wunused-variable]
+   u64 * tmpptr = (u64*)getBatchSample(&AxiMcdma);
+         ^~~~~~
+../src/main.cc:361:6: warning: unused variable 'in_left' [-Wunused-variable]
+  u32 in_left,in_right;
+      ^~~~~~~
+../src/main.cc:361:14: warning: unused variable 'in_right' [-Wunused-variable]
+  u32 in_left,in_right;
+              ^~~~~~~~
+../src/main.cc:362:6: warning: unused variable 'output' [-Wunused-variable]
+  u32 output;
+      ^~~~~~
+../src/main.cc:363:16: warning: unused variable 'u32Temp' [-Wunused-variable]
+  unsigned long u32Temp;
+                ^~~~~~~
+../src/main.cc:365:7: warning: unused variable 'fftctrl' [-Wunused-variable]
+  u32 *fftctrl = (u32 *)XPAR_FFT_CTRL_0_S00_AXI_BASEADDR;
+       ^~~~~~~
+../src/main.cc:369:6: warning: unused variable 'fftcore_status' [-Wunused-variable]
+  u32 fftcore_status;// = (u32 *)XPAR_FFT_CTRL_0_S00_AXI_BASEADDR + 2;
+      ^~~~~~~~~~~~~~
+../src/main.cc:379:6: warning: unused variable 'framecnt' [-Wunused-variable]
+  int framecnt = -1;
+      ^~~~~~~~
+../src/main.cc:380:6: warning: unused variable 'mark_value' [-Wunused-variable]
+  int mark_value = 1;
+      ^~~~~~~~~~
+../src/main.cc:383:6: warning: unused variable 'up' [-Wunused-variable]
+  int up[101];
+      ^~
+../src/main.cc:384:6: warning: unused variable 'down' [-Wunused-variable]
+  int down[101];
+      ^~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: audio_app_trace.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "audio_app_trace.elf"  ./src/audio.o ./src/circularBuffer.o ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+'Finished building target: audio_app_trace.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size audio_app_trace.elf  |tee "audio_app_trace.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  68152	  19368	167832512	167920032	a0241a0	audio_app_trace.elf
+'Finished building: audio_app_trace.elf.size'
+' '
+15:43:32 **** Auto Build of configuration Debug for project standalone_bsp_0_xmcdma_interrupt_example_1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/xmcdma_interrupt_example.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xmcdma_interrupt_example.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/xmcdma_interrupt_example.d" -MT"src/xmcdma_interrupt_example.o" -o "src/xmcdma_interrupt_example.o" "../src/xmcdma_interrupt_example.c"
+../src/xmcdma_interrupt_example.c:122:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+../src/xmcdma_interrupt_example.c: In function 'main':
+../src/xmcdma_interrupt_example.c:211:14: warning: unused variable 'i' [-Wunused-variable]
+  int Status, i;
+              ^
+../src/xmcdma_interrupt_example.c: In function 'SendPacket':
+../src/xmcdma_interrupt_example.c:544:16: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+     TxPacket = (u8 *)XMcdma_BdRead64(BdCurPtr, XMCDMA_BD_BUFA_OFFSET);
+                ^
+../src/xmcdma_interrupt_example.c: In function 'DoneHandler':
+../src/xmcdma_interrupt_example.c:597:14: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   RxPacket = (void *)XMcdma_BdRead64(FreeBdPtr, XMCDMA_BD_BUFA_OFFSET);
+              ^
+../src/xmcdma_interrupt_example.c:608:29: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+                 FreeBdPtr = (XMcdma_Bd *) XMcdma_BdRead64(FreeBdPtr, XMCDMA_BD_NDESC_OFFSET);
+                             ^
+'Finished building: ../src/xmcdma_interrupt_example.c'
+' '
+'Building target: standalone_bsp_0_xmcdma_interrupt_example_1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "standalone_bsp_0_xmcdma_interrupt_example_1.elf"  ./src/xmcdma_interrupt_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+'Finished building target: standalone_bsp_0_xmcdma_interrupt_example_1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size standalone_bsp_0_xmcdma_interrupt_example_1.elf  |tee "standalone_bsp_0_xmcdma_interrupt_example_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  47080	   2384	  31352	  80816	  13bb0	standalone_bsp_0_xmcdma_interrupt_example_1.elf
+'Finished building: standalone_bsp_0_xmcdma_interrupt_example_1.elf.size'
+' '
+15:43:33 **** Auto Build of configuration Debug for project standalone_bsp_0_xmcdma_polled_example_1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/xmcdma_polled_example.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xmcdma_polled_example.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/xmcdma_polled_example.d" -MT"src/xmcdma_polled_example.o" -o "src/xmcdma_polled_example.o" "../src/xmcdma_polled_example.c"
+../src/xmcdma_polled_example.c:120:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+../src/xmcdma_polled_example.c: In function 'main':
+../src/xmcdma_polled_example.c:197:14: warning: unused variable 'i' [-Wunused-variable]
+  int Status, i;
+              ^
+../src/xmcdma_polled_example.c: In function 'CheckDmaResult':
+../src/xmcdma_polled_example.c:512:14: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   RxPacket = (void *)XMcdma_BdRead64(BdPtr1, XMCDMA_BD_BUFA_OFFSET);
+              ^
+../src/xmcdma_polled_example.c:524:26: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+                 BdPtr1 = (XMcdma_Bd *) XMcdma_BdRead64(BdPtr1, XMCDMA_BD_NDESC_OFFSET);
+                          ^
+../src/xmcdma_polled_example.c: In function 'SendPacket':
+../src/xmcdma_polled_example.c:564:16: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+     TxPacket = (u8 *)XMcdma_BdRead64(BdCurPtr, XMCDMA_BD_BUFA_OFFSET);
+                ^
+'Finished building: ../src/xmcdma_polled_example.c'
+' '
+'Building target: standalone_bsp_0_xmcdma_polled_example_1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "standalone_bsp_0_xmcdma_polled_example_1.elf"  ./src/xmcdma_polled_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+'Finished building target: standalone_bsp_0_xmcdma_polled_example_1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size standalone_bsp_0_xmcdma_polled_example_1.elf  |tee "standalone_bsp_0_xmcdma_polled_example_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  42076	   1648	  31464	  75188	  125b4	standalone_bsp_0_xmcdma_polled_example_1.elf
+'Finished building: standalone_bsp_0_xmcdma_polled_example_1.elf.size'
+' '
+15:45:38 **** Incremental Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+15:47:38 **** Auto Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../standalone_bsp_0/ps7_cortexa9_0/include -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\arm-none-eabi\thumb" -I"F:\Xilinx\SDK\2019.1\gnu\aarch32\nt\gcc-arm-none-eabi\arm-none-eabi\include\c++\8.2.0\backward" -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+In file included from ../src/main.cc:1:
+../src/headers.h:51:2: warning: #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, DEFAULT SET TO 0x01000000 [-Wcpp]
+ #warning CHECK FOR THE VALID DDR ADDRESS IN XPARAMETERS.H, \
+  ^~~~~~~
+../src/main.cc: In function 'int TxSetup(XMcdma*)':
+../src/main.cc:129:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i, j;
+      ^
+../src/main.cc:129:9: warning: unused variable 'j' [-Wunused-variable]
+  u32 i, j;
+         ^
+../src/main.cc:130:6: warning: unused variable 'buf_align' [-Wunused-variable]
+  u32 buf_align;
+      ^~~~~~~~~
+../src/main.cc: In function 'int RxSetup(XMcdma*)':
+../src/main.cc:176:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i, j;
+      ^
+../src/main.cc:176:9: warning: unused variable 'j' [-Wunused-variable]
+  u32 i, j;
+         ^
+../src/main.cc:177:6: warning: unused variable 'buf_align' [-Wunused-variable]
+  u32 buf_align;
+      ^~~~~~~~~
+../src/main.cc: In function 'int CheckData(u8*, int, u32)':
+../src/main.cc:234:23: warning: comparison of integer expressions of different signedness: 'u32' {aka 'long unsigned int'} and 'int' [-Wsign-compare]
+  for(Index = 0; Index < ByteCount; Index++) {
+                 ~~~~~~^~~~~~~~~~~
+In file included from ../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma.h:155,
+                 from ../src/headers.h:23,
+                 from ../src/main.cc:1:
+../src/main.cc: In function 'int CheckDmaResult(XMcdma*, u32)':
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:102:45: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+  (*(u64 *)(((void *)(UINTPTR)(BaseAddress)) + (u32)(Offset)))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../src/main.cc:272:19: note: in expansion of macro 'XMcdma_BdRead64'
+  RxPacket = (u8 *)XMcdma_BdRead64(BdPtr1, XMCDMA_BD_BUFA_OFFSET);
+                   ^~~~~~~~~~~~~~~
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:84:45: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+  (*(u32 *)(((void *)(UINTPTR)(BaseAddress)) + (u32)(Offset)))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:201:3: note: in expansion of macro 'XMcdma_BdRead'
+  (XMcdma_BdRead((BdPtr), XMCDMA_BD_STS_OFFSET) & \
+   ^~~~~~~~~~~~~
+../src/main.cc:273:19: note: in expansion of macro 'XMcDma_BdGetActualLength'
+  RxPacketLength = XMcDma_BdGetActualLength(BdPtr1, MaxTransferBytes);
+                   ^~~~~~~~~~~~~~~~~~~~~~~~
+../../standalone_bsp_0/ps7_cortexa9_0/include/xmcdma_bd.h:102:45: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+  (*(u64 *)(((void *)(UINTPTR)(BaseAddress)) + (u32)(Offset)))
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../src/main.cc:284:27: note: in expansion of macro 'XMcdma_BdRead64'
+    BdPtr1 = (XMcdma_Bd *) XMcdma_BdRead64(BdPtr1, XMCDMA_BD_NDESC_OFFSET);
+                           ^~~~~~~~~~~~~~~
+../src/main.cc: In function 'UINTPTR getBatchSample(XMcdma*)':
+../src/main.cc:293:6: warning: unused variable 'Status' [-Wunused-variable]
+  int Status;
+      ^~~~~~
+../src/main.cc:298:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i;
+      ^
+../src/main.cc:299:6: warning: variable 'Chan_SerMask' set but not used [-Wunused-but-set-variable]
+  u32 Chan_SerMask;
+      ^~~~~~~~~~~~
+../src/main.cc: In function 'int main()':
+../src/main.cc:361:6: warning: unused variable 'in_left' [-Wunused-variable]
+  u32 in_left,in_right;
+      ^~~~~~~
+../src/main.cc:361:14: warning: unused variable 'in_right' [-Wunused-variable]
+  u32 in_left,in_right;
+              ^~~~~~~~
+../src/main.cc:362:6: warning: unused variable 'output' [-Wunused-variable]
+  u32 output;
+      ^~~~~~
+../src/main.cc:363:16: warning: unused variable 'u32Temp' [-Wunused-variable]
+  unsigned long u32Temp;
+                ^~~~~~~
+../src/main.cc:365:7: warning: unused variable 'fftctrl' [-Wunused-variable]
+  u32 *fftctrl = (u32 *)XPAR_FFT_CTRL_0_S00_AXI_BASEADDR;
+       ^~~~~~~
+../src/main.cc:369:6: warning: unused variable 'fftcore_status' [-Wunused-variable]
+  u32 fftcore_status;// = (u32 *)XPAR_FFT_CTRL_0_S00_AXI_BASEADDR + 2;
+      ^~~~~~~~~~~~~~
+../src/main.cc:379:6: warning: unused variable 'framecnt' [-Wunused-variable]
+  int framecnt = -1;
+      ^~~~~~~~
+../src/main.cc:380:6: warning: unused variable 'mark_value' [-Wunused-variable]
+  int mark_value = 1;
+      ^~~~~~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: audio_app_trace.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "audio_app_trace.elf"  ./src/audio.o ./src/circularBuffer.o ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+'Finished building target: audio_app_trace.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size audio_app_trace.elf  |tee "audio_app_trace.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  68156	  19368	167832512	167920036	a0241a4	audio_app_trace.elf
+'Finished building: audio_app_trace.elf.size'
+' '
+15:47:59 **** Incremental Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+16:14:29 **** Incremental Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+10:25:54 **** Incremental Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+10:49:01 **** Incremental Build of configuration Debug for project audio_app_trace ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.

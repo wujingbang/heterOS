@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER fft_ctrl
+	OPTION supported_peripherals = (fft_ctrl);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = fft_ctrl;
+END DRIVER

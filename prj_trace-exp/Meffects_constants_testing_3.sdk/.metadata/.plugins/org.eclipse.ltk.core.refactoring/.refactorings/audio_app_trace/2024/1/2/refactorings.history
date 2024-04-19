@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;audio_app_trace/src/circluarBuffer.cc&apos; to &apos;circularBuffer.cc&apos;" description="Rename resource &apos;circluarBuffer.cc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/circluarBuffer.cc" name="circularBuffer.cc" stamp="1705139272211" updateReferences="true"/>
+</session>

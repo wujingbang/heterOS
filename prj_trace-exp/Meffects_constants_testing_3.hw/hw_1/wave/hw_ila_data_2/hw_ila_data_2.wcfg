@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="F:/work/gitea/audio_watermark/fpga-m-/prj_trace-1114/Meffects_constants_testing_3.hw/hw_1/wave/hw_ila_data_2/hw_ila_data_2.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="2377564fs"></ZoomEndTime>
+      <Cursor1Time time="488000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="588"></NameColumnWidth>
+      <ValueColumnWidth column_width="111"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="2" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject fp_name="effects_loop_i/audio_fifo2stream_v2_0/inst/i2s_fifo_inst/rx_ldata" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">effects_loop_i/audio_fifo2stream_v2_0/inst/i2s_fifo_inst/rx_ldata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_ldata[23:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="effects_loop_i/audio_fifo2stream_v2_0/inst/i2s_fifo_inst/rx_rdata" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">effects_loop_i/audio_fifo2stream_v2_0/inst/i2s_fifo_inst/rx_rdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_rdata[23:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+</wave_config>
