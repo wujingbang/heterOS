@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="273550000fs"></ZoomStartTime>
+      <ZoomEndTime time="456250001fs"></ZoomEndTime>
+      <Cursor1Time time="304000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="427"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="39" />
+   <wvobject fp_name="/top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/m_axis_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/m_axis_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/m_axis_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/m_axis_tlast" type="logic">
+      <obj_property name="ElementShortName">m_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/out_tdata" type="array">
+      <obj_property name="ElementShortName">out_tdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">out_tdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/out_tvalid" type="logic">
+      <obj_property name="ElementShortName">out_tvalid</obj_property>
+      <obj_property name="ObjectShortName">out_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/out_tready" type="logic">
+      <obj_property name="ElementShortName">out_tready</obj_property>
+      <obj_property name="ObjectShortName">out_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/out_tlast" type="logic">
+      <obj_property name="ElementShortName">out_tlast</obj_property>
+      <obj_property name="ObjectShortName">out_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/aclk_state" type="array">
+      <obj_property name="ElementShortName">aclk_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">aclk_state[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/aclk_next" type="array">
+      <obj_property name="ElementShortName">aclk_next[3:0]</obj_property>
+      <obj_property name="ObjectShortName">aclk_next[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/window_addr" type="array">
+      <obj_property name="ElementShortName">window_addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">window_addr[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/window_data" type="array">
+      <obj_property name="ElementShortName">window_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">window_data[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_a_indata" type="array">
+      <obj_property name="ElementShortName">multi_a_indata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">multi_a_indata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_a_rdy" type="logic">
+      <obj_property name="ElementShortName">multi_a_rdy</obj_property>
+      <obj_property name="ObjectShortName">multi_a_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_a_valid" type="logic">
+      <obj_property name="ElementShortName">multi_a_valid</obj_property>
+      <obj_property name="ObjectShortName">multi_a_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_b_indata" type="array">
+      <obj_property name="ElementShortName">multi_b_indata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">multi_b_indata[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_b_indata" type="array">
+      <obj_property name="ElementShortName">multi_b_indata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">multi_b_indata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_b_rdy" type="logic">
+      <obj_property name="ElementShortName">multi_b_rdy</obj_property>
+      <obj_property name="ObjectShortName">multi_b_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_b_valid" type="logic">
+      <obj_property name="ElementShortName">multi_b_valid</obj_property>
+      <obj_property name="ObjectShortName">multi_b_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_outdata" type="array">
+      <obj_property name="ElementShortName">multi_outdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">multi_outdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/multi_valid" type="logic">
+      <obj_property name="ElementShortName">multi_valid</obj_property>
+      <obj_property name="ObjectShortName">multi_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/res_fifo_indata" type="array">
+      <obj_property name="ElementShortName">res_fifo_indata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res_fifo_indata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/res_fifo_full" type="logic">
+      <obj_property name="ElementShortName">res_fifo_full</obj_property>
+      <obj_property name="ObjectShortName">res_fifo_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/res_fifo_wr_en" type="logic">
+      <obj_property name="ElementShortName">res_fifo_wr_en</obj_property>
+      <obj_property name="ObjectShortName">res_fifo_wr_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/res_fifo_empty" type="logic">
+      <obj_property name="ElementShortName">res_fifo_empty</obj_property>
+      <obj_property name="ObjectShortName">res_fifo_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/aclk" type="logic">
+      <obj_property name="ElementShortName">aclk</obj_property>
+      <obj_property name="ObjectShortName">aclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/s_axis_a_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_a_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_a_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/s_axis_a_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_a_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_a_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/s_axis_a_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_a_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_a_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/s_axis_b_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_b_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_b_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/s_axis_b_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_b_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_b_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/s_axis_b_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_b_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_b_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/m_axis_result_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_result_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_result_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/float_multiply_inst/m_axis_result_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_result_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_result_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_S_AXIS_inst/fifo_res_inst/data_count" type="array">
+      <obj_property name="ElementShortName">data_count[10:0]</obj_property>
+      <obj_property name="ObjectShortName">data_count[10:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/multiply_window_inst/multiply_window_v1_0_M_AXIS_inst/curr_out_state" type="array">
+      <obj_property name="ElementShortName">curr_out_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_out_state[2:0]</obj_property>
+   </wvobject>
+</wave_config>
