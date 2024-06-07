@@ -1,0 +1,1882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>xilinx.com</spirit:vendor>
+  <spirit:library>user</spirit:library>
+  <spirit:name>audio_fifo2stream_v2_0</spirit:name>
+  <spirit:version>2.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>m00_axis</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TLAST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tlast</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s00_axis</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TLAST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tlast</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s_axi_config</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm_rtl" spirit:version="1.0"/>
+      <spirit:slave>
+        <spirit:memoryMapRef spirit:memoryMapRef="s_axi_config"/>
+      </spirit:slave>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWADDR</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_awaddr</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWPROT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_awprot</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_awvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_awready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_wdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WSTRB</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_wstrb</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_wvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_wready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_bresp</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_bvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_bready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARADDR</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_araddr</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARPROT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_arprot</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_arvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_arready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_rdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_rresp</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_rvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_rready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>aresetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>m00_axis_aresetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M00_AXIS_ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s00_axis_aresetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s_axi_config_aresetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG_ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>m00_axis_aclk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m00_axis_aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M00_AXIS_ACLK.ASSOCIATED_BUSIF">m00_axis</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.M00_AXIS_ACLK.ASSOCIATED_RESET">m00_axis_aresetn</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s00_axis_aclk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s00_axis_aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_ACLK.ASSOCIATED_BUSIF">s00_axis</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXIS_ACLK.ASSOCIATED_RESET">s00_axis_aresetn</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s_axi_config_aclk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_config_aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG_ACLK.ASSOCIATED_BUSIF">s_axi_config</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG_ACLK.ASSOCIATED_RESET">s_axi_config_aresetn</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:memoryMaps>
+    <spirit:memoryMap>
+      <spirit:name>s_axi_config</spirit:name>
+      <spirit:addressBlock>
+        <spirit:name>reg0</spirit:name>
+        <spirit:baseAddress spirit:format="bitString" spirit:resolve="user" spirit:bitStringLength="32">0</spirit:baseAddress>
+        <spirit:range spirit:format="long" spirit:resolve="dependent" spirit:dependency="pow(2,(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1) + 1)" spirit:minimum="4096" spirit:rangeType="long">4096</spirit:range>
+        <spirit:width spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_DATA_WIDTH&apos;)) - 1) + 1">32</spirit:width>
+        <spirit:usage>register</spirit:usage>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+  </spirit:memoryMaps>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>Verilog</spirit:language>
+        <spirit:modelName>audio_fifo2stream_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_xilinx_com_ip_floating_point_7_1__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>e3261335</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
+        <spirit:displayName>Simulation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>Verilog</spirit:language>
+        <spirit:modelName>audio_fifo2stream_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_floating_point_7_1__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>e3261335</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_xpgui</spirit:name>
+        <spirit:displayName>UI Layout</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:xgui.ui</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_xpgui_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>906c8d15</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>clk_100mhz</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>BCLK</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>LRCLK</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SDATA_I</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SDATA_O</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>BCLK_CPY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>LRCLK_CPY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_awaddr</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_awprot</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">2</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_awvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_awready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_wdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_wstrb</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_DATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">1</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_wvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_wready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_bresp</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_bvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_bready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_araddr</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_arprot</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">2</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_arvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_arready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_rdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_rresp</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_rvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_config_rready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.AXIS_TDATA_WIDTH&apos;)) - 1)">63</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tlast</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s00_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.AXIS_TDATA_WIDTH&apos;)) - 1)">63</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tlast</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m00_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">1</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>C_S_AXI_CONFIG_DATA_WIDTH</spirit:name>
+        <spirit:displayName>C S Axi Config Data Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_CONFIG_DATA_WIDTH">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_S_AXI_CONFIG_ADDR_WIDTH</spirit:name>
+        <spirit:displayName>C S Axi Config Addr Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH">5</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>AXIS_TDATA_WIDTH</spirit:name>
+        <spirit:displayName>Axis Tdata Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.AXIS_TDATA_WIDTH">64</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>TRANSFER_SIZE</spirit:name>
+        <spirit:displayName>Transfer Size</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TRANSFER_SIZE">1024</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_M00_AXIS_START_COUNT</spirit:name>
+        <spirit:displayName>C M00 Axis Start Count</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M00_AXIS_START_COUNT">64</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>DIRECT_CONNECT</spirit:name>
+        <spirit:displayName>Direct Connect</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.DIRECT_CONNECT">0</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>choice_list_570399af</spirit:name>
+      <spirit:enumeration>1</spirit:enumeration>
+      <spirit:enumeration>0</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
+      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
+      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/fifo_L_R_float/fifo_L_R_float.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/b24_to_float/b24_to_float.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/float_to_b24/float_to_b24.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/fifo_L_R/fifo_L_R.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0_M00_AXIS.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0_S00_AXIS.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0_S_AXI_CONFIG.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/i2s_fifo.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/iis_deser.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/iis_ser.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_570dd41f</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.2">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_floating_point_7_1__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="floating_point" xilinx:version="7.1">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/fifo_L_R_float/fifo_L_R_float.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/b24_to_float/b24_to_float.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/float_to_b24/float_to_b24.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/fifo_L_R/fifo_L_R.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0_M00_AXIS.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0_S00_AXIS.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0_S_AXI_CONFIG.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/i2s_fifo.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/iis_deser.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/iis_ser.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/audio_fifo2stream_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.2">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_floating_point_7_1__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="floating_point" xilinx:version="7.1">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>xgui/audio_fifo2stream_v2_0_v2_0.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_906c8d15</spirit:userFileType>
+        <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>audio_fifo2stream floating</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>C_S_AXI_CONFIG_DATA_WIDTH</spirit:name>
+      <spirit:displayName>C S Axi Config Data Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXI_CONFIG_DATA_WIDTH">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_S_AXI_CONFIG_ADDR_WIDTH</spirit:name>
+      <spirit:displayName>C S Axi Config Addr Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH">5</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>AXIS_TDATA_WIDTH</spirit:name>
+      <spirit:displayName>Axis Tdata Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.AXIS_TDATA_WIDTH">64</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>TRANSFER_SIZE</spirit:name>
+      <spirit:displayName>Transfer Size</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.TRANSFER_SIZE">1024</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_M00_AXIS_START_COUNT</spirit:name>
+      <spirit:displayName>C M00 Axis Start Count</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M00_AXIS_START_COUNT">64</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">audio_fifo2stream_v1_0_v1_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>DIRECT_CONNECT</spirit:name>
+      <spirit:displayName>Direct Connect</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DIRECT_CONNECT" spirit:choiceRef="choice_list_570399af">0</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:supportedFamilies>
+        <xilinx:family xilinx:lifeCycle="Production">zynq</xilinx:family>
+      </xilinx:supportedFamilies>
+      <xilinx:taxonomies>
+        <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
+      </xilinx:taxonomies>
+      <xilinx:displayName>audio_fifo2stream floating</xilinx:displayName>
+      <xilinx:definitionSource>package_project</xilinx:definitionSource>
+      <xilinx:xpmLibraries>
+        <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
+        <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
+      </xilinx:xpmLibraries>
+      <xilinx:coreRevision>39</xilinx:coreRevision>
+      <xilinx:upgrades>
+        <xilinx:canUpgradeFrom>xilinx.com:user:audio_fifo2stream_v1_0:1.0</xilinx:canUpgradeFrom>
+      </xilinx:upgrades>
+      <xilinx:coreCreationDateTime>2024-05-15T07:38:16Z</xilinx:coreCreationDateTime>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dc0b019_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f928e59_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71f5f305_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e9267ff_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ef09107_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4916de40_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d937820_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61e202f0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14b0b42e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53650e38_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e20777d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b5a5650_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42520c06_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29184bbb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11cf214f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4995798_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8438cae_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5df4c5b4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@320897d7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3308de17_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a33e6f3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3477e02b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6175c3ba_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bb05031_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17aba86d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2767fa9e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76b520fc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a79fbb3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@622af290_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@315eafba_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47bb29eb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a1644d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4785c77e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57a082d1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23903b0f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f18fe67_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e4777f4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cb66754_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22194930_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38e1fd7a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68b2d911_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d1ea874_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7180c33_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b03568f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53712843_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47c4aa89_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@199e3ed0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@836369b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e8a52e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ea862c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7411854b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1adedcd0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36baa61a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d3e7a57_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4275c2f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e9ce4d1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77b0a2e2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3111d338_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ce061b9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6544aa09_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@361cd2a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c998f76_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@753c0854_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9a303d9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44bf1d49_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1efd7a00_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e8968b9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1612e0cb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@179c95cc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@416fd61_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62e656e6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51158763_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17eb6a23_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7220510b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bf587b1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3dd496e0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a1a0ddc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ed41544_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b283a93_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13cb63b3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f38239c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f2cb669_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c92cd40_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f17dbad_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28710b0b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@519e8fe3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e83354c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59283ae8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3281e88e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@97d23f2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bc9735d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69005b4c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e847ee0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7279bf72_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7716c6a5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f422f95_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11ee7e9d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@198a486f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fa55286_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d409cd8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@661c53ac_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@478376d9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30e654a3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77f52e84_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59aeb740_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29159094_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c01c940_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25109592_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46203cd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e27c2e4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e43159_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@aed0db3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1422e852_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@215ef67_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57054820_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c4089c9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7190c225_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18ba17ec_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@751e3b47_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6472893c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fdcfc24_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4794afac_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11d24088_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a8b07fc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60838f9f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a523f00_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c1b2586_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43c5800d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@733c099b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b2ab9a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72879d3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57cbe1a9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26a9c838_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73b24af1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51c48ebe_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@80f6c9d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17eefcfb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a226bee_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@694013e5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@652d1880_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39563d82_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@444b837f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b6c1ff4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e76baa4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d571176_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7194dac8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@521e016_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@727431a8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fd9739f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1730319d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@272f463c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e2d009b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7621b8b5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62193f1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bed68a9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@173741e8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5151aa3d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e02e904_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6262d721_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57416860_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67a92ba_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f9f43dd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4244d22e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f8e4131_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e3cb6e9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@705dd275_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f6b6780_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@565301c8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c09674c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7040bde6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24d901da_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39f377ec_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25532a64_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@789011d0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@337415b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@438eefce_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b9436d2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64646789_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@206b77c1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e8b96d2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a4fb3ca_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e8e641b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29bef88c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e7bb13c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d5831ab_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65339a5c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45958db7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ed9836b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6902a9fd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d7f0faa_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@106539c0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a26b0df_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3076153a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54c820ab_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e927fbc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26f2b505_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26f45d43_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61221a83_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1860b6a9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a530949_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77f8ee25_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a2d247b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@789241eb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41364d89_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a2d325d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ab67ff5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@213bf0ab_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a658dd1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6114a7f8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bbcf34f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@286fbf1d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5abdc35_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62317ab8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65abe218_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e3559a5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3104ede6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1332200f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@307da5db_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49511ed6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@156f07b4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@449aec52_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d542576_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f157049_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@84b7e9d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e8297f6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f117e55_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28f69518_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23d97c7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63269e1b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@326fb329_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e688d69_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f131e99_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e5dbaf1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32221e02_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@397e85bf_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6412c036_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f781bd3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e99299b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f5ad2ee_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6faad2f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1371a445_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d9f7081_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c7f77ea_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16791d1d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ee05714_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@581ff5db_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e272fc6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a38855_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44e5025_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@345ec3e2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@729b0d54_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@365c2569_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29e8dcf0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4185a6a9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48770e02_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11f354c4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79c36c8f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14ee7a30_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b0b3d78_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@210fd462_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39d442a0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64cd1232_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b8ffa6d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ea4721b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@df25943_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e402e5e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7889ea09_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51745f37_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4975c701_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d597032_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@524e79c7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e6f266a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28c90ada_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1949bc14_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b98ad2d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63e23a41_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e237044_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d0e349_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53bd5d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ee1d900_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25b66a4a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f71577d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c54f546_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42c6008a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@790b66b5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@179a186a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@243a18e2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ccef52_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@361755a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b0bf612_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5718fbec_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15280949_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51d679de_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b85c34a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37aa11fb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65cffe70_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ca8bdd9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4541a6d2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c465d98_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2063816f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55958ed_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29d098c2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13179bd0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17a6cffc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58f72a8f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52a484fc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@471d27f2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bd05eae_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@90bde95_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32e2866c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c75fe09_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@469cd44a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@399a1798_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49f5a630_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bc5d133_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@518d7138_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7102819e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@226a1ed3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23b0a144_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a542fbc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e415869_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61809fbe_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62e28464_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64c3e0f7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a5c8f3c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47afb6c4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52567b82_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bcbec5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55f713b5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55e507a8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32814342_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50950c90_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42d84dfa_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cb9f782_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ea5bc20_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c762ded_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23d5197c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36a53355_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77fa635c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7534d1c5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a9ea881_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@310569a3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aa30e2d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@493966be_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@637b5cfb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ef2cee7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@751b4f51_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@552f30d5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48c3b54_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e1538d4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2137199c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66c0c13f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1094fd22_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3504a057_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fc98f13_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bf65c20_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a6b2d8f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@161fe612_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73bb17fd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c4a6a1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f55413a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d6e4edb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52392c33_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a0c99a6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e81b42f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e922896_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29430a67_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32256c3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79aefb9c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41d1431d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a185885_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d00cbef_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b4737c9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6641ccb9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f9f3198_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41d6f7a6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cf835a8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6beeecf1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2925b0bd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24530bd7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@337f0653_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6909a896_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6859ec13_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@459d5fdf_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61651a79_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fcb8896_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79dc1b8a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@538ad92b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cec50b0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57202f77_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c70dd67_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ce9c105_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a3d99bb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15ee7ccf_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@619fa87f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72c2dcc5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b1fad37_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3971be51_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c4c84a1_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fd763fd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@159a4ece_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63d2ee0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63c45736_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5aebee06_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74a876af_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ef27ab8_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28af2896_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@562bab1a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@747116eb_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66dfda28_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a74a749_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fb0114_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ce40373_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40ba24a3_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7379bd_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f47635_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72cf57f2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fd335ff_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@184a5f62_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c7a23ad_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2962e69c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58fbb178_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f15bfd2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7734ebac_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b8cd1ca_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d49e919_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30025bc9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60c643e4_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28636470_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63b086f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39a48d03_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48650d10_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6dbb6bb2_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77b3cac5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@195e0ee7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a4c349a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@687210af_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6358443f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d7e77b5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fa6ad24_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f81c09a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@473bddb7_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a421d61_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51229f4c_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3346a11_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54298107_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57f8a540_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18570f89_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6514270e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53cfc430_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@347873a9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@644f3d9d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c911937_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@362d1f0d_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20b1b708_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b6c4d61_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e0ee8da_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fb8666b_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@487f6347_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10ca6e03_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a5f5ad9_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79056794_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b79e4e0_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5977b6de_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@588efd6e_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d7031be_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46cce33_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28961d5a_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4907b9fc_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d431671_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51482a13_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30650483_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@684023d5_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@492468f_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@676357b6_ARCHIVE_LOCATION">f:/work/gitea/audio_watermark/git/audio_watermark/audioi2s_fifo2stream_2.0</xilinx:tag>
+      </xilinx:tags>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a70218cc"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ef81c61f"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="fcf954e3"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="9c7b2229"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="223cecb0"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="29d66fb8"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>
