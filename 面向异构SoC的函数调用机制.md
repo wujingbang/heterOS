@@ -2,7 +2,7 @@
 
 __常见异构SoC的框架结构图以及分析：__
 
-![](C:\Users\tls\Desktop\imgs\SoC_structure.png)
+![](.\imgs\SoC_structure.png)
 
 （壹）：FPGA与CPU之间通常采用总线传输协议，即AXI、PCIE等。FPGA内的模块通常作为外设模块挂载在总线上，每个模块分配一个物理地址。在CPU中运行的程序直接通过物理地址对FPGA内模块进行读写访问。
 
@@ -12,11 +12,11 @@ __常见异构SoC的框架结构图以及分析：__
 
 （补充）：FPGA内部通常集成了存储空间和DSP模块（用于浮点计算），但资源较少，无法与CPU的三级存储结构效率和易用性相提并论。
 
-![](C:\Users\tls\Desktop\imgs\FPGA.png)
+![](.\imgs\FPGA.png)
 
 __基本思路：__
 
-![](C:\Users\tls\Desktop\imgs\diagram.png)
+![](.\imgs\diagram.png)
 
 上图为实现的模块的逻辑连线图，核心模块介绍如下：
 
@@ -31,11 +31,11 @@ __（1）修改之前的情况分析__
 
 通常情况下，CPU与FPGA中的功能模块逻辑连接如下图中的两种方式。第一种方式中每个模块单独配置一个DMA然后与CPU连接。CPU要去模块取数据或写数据时需要对每一次的读写请求配置对应的DMA模块，主要包括读回来的数据将要存放的内存地址，以及想要写的数据目前存放的内存地址、将要读写数据的长度（字节）。
 
-![](C:\Users\tls\Desktop\imgs\CPU_config.png)
+![](.\imgs\CPU_config.png)
 
 CPU即软件中运行的配置代码示例如下：
 
-![](C:\Users\tls\Desktop\imgs\code01.png)
+![](.\imgs\code01.png)
 
 该示例代码主要功能是配置一次读、写请求，即写入一块数据（大小为MAX\_PKT\_LEN\*8字节），然后从设备中读到计算完后的输出数据。Bufin和bufout分别为待写入数据的内存起始地址与为读取数据申请的空内存块起始地址。XAxiDma\_SimpleTransfer函数为SDK提供的DMA配置接口，XAXIDMA\_DEVICE\_TO\_DMA为读方向（从device通过dma读回来），XAXIDMA\_DMA\_TO\_DEVICE为写方向（通过dma写到device）。最后的while循环为轮询等待dma是否完成读写任务（可以改成中断形式进行）。
 
@@ -49,13 +49,13 @@ __（2）修改之后的情况分析__
 
 其次，向接口发送完命令后，CPU即可完成别的工作。这里写的while循环是轮询等待作用，是测试用的，正式版可以改成中断（还未完全实现）。下图给了两个例子，一个是写（MM2S，即master to slave），一个是同时读写（RWBOTH）。
 
-![](C:\Users\tls\Desktop\imgs\code02.png)
+![](.\imgs\code02.png)
 
 
 
-![](C:\Users\tls\Desktop\imgs\code03.png)
+![](.\imgs\code03.png)
 
-![](C:\Users\tls\Desktop\imgs\code04.png)
+![](.\imgs\code04.png)
 
 
 
@@ -69,7 +69,7 @@ __（2）修改之后的情况分析__
 
 基本结构：
 
-![](C:\Users\tls\Desktop\imgs\CPU_access_FPGA.png)
+![](.\imgs\CPU_access_FPGA.png)
 
 __【CPU访问FPGA资源】：__
 
@@ -92,7 +92,7 @@ __【FPGA端访问CPU资源】__：
 
 A）面向异步执行的函数调用：
 
-![](C:\Users\tls\Desktop\imgs\flow_picture01.png)
+![](.\imgs\flow_picture01.png)
 
 流程：
 
@@ -104,7 +104,7 @@ A）面向异步执行的函数调用：
 
 FPGA模块运行状态机：
 
-![](C:\Users\tls\Desktop\imgs\FPGA_state_machine.png)
+![](.\imgs\FPGA_state_machine.png)
 
 fpga寄存器定义：
 
