@@ -1,5 +1,13 @@
 ### 									面向异构SoC的函数调用机制
 
+
+#### 框架结构
+
+![](./imgs/framework.jpg)
+
+
+
+
 __常见异构SoC的框架结构图以及分析：__
 
 ![](./imgs/SoC_structure.png)
