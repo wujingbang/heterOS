@@ -5,7 +5,8 @@
         parameter integer DMA_S2MM_ADDR_BASE = 32'h40400000,
 		// User parameters ends
 		// Do not modify the parameters beyond this line
-
+        parameter integer DEVICE_NUMBER = 3,
+        
         parameter integer C_LENGTH_WIDTH = 12,
 		// Parameters of Axi Slave Bus Interface S00_AXI
 
@@ -35,11 +36,15 @@
         input wire irq_s2mm_in,
         input wire irq_mm2s_in,
         output reg irq_out,
-        output wire [3:0] axis_tdest,
-        output wire [15:0] axis_suppress,
-
-        output wire dma_resetn_out,
+        output wire [3:0] axis_tdest_mm2s,
         
+        input wire [DEVICE_NUMBER-1:0] rd_channel_valid,
+        input wire [DEVICE_NUMBER-1:0] mm2s_dma_valid,
+        input wire [DEVICE_NUMBER-1:0] s2mm_dma_ready,
+        
+        output wire [DEVICE_NUMBER-1:0] axis_suppress,
+        output wire axis_aclken,
+                
 		// Ports of Axi Slave Bus Interface S00_AXI
         input wire  s00_axi_aclk,
 		input wire  s00_axi_aresetn,
@@ -105,11 +110,11 @@
 		input wire [1 : 0] m00_axi_lite_bresp,
 		input wire  m00_axi_lite_bvalid,
 		output wire  m00_axi_lite_bready,
-		(*mark_debug = "true"*)output wire [C_M00_AXI_ADDR_WIDTH-1 : 0] m00_axi_lite_araddr,
+		output wire [C_M00_AXI_ADDR_WIDTH-1 : 0] m00_axi_lite_araddr,
 		output wire [2 : 0] m00_axi_lite_arprot,
 		output wire  m00_axi_lite_arvalid,
 		input wire  m00_axi_lite_arready,
-		(*mark_debug = "true"*)input wire [C_M00_AXI_DATA_WIDTH-1 : 0] m00_axi_lite_rdata,
+		input wire [C_M00_AXI_DATA_WIDTH-1 : 0] m00_axi_lite_rdata,
 		input wire [1 : 0] m00_axi_lite_rresp,
 		input wire  m00_axi_lite_rvalid,
 		output wire  m00_axi_lite_rready
@@ -117,19 +122,27 @@
 	);
 	
     //descpriptor fifo
-    wire descfifo_wr_en;
+    (*mark_debug = "true"*)wire descfifo_wr_en;
     wire descfifo_full;
-    wire [31:0] descfifo_din;
-    wire descfifo_rd_en;
+    (*mark_debug = "true"*)wire [31:0] descfifo_din;
+    (*mark_debug = "true"*)wire descfifo_rd_en;
     wire descfifo_empty;
-    wire descfifo_valid;
-    wire [127:0] descfifo_dout;
+    (*mark_debug = "true"*)wire descfifo_valid;
+    (*mark_debug = "true"*)wire [127:0] descfifo_dout;
+    
+    (*mark_debug = "true"*)wire descfifo_trans_wr_en;
+    wire descfifo_trans_full;
+    (*mark_debug = "true"*)wire [127:0] descfifo_trans_din;
+    (*mark_debug = "true"*)wire descfifo_trans_rd_en;
+    wire descfifo_trans_empty;
+    (*mark_debug = "true"*)wire descfifo_trans_valid;
+    (*mark_debug = "true"*)wire [127:0] descfifo_trans_dout;
     
     reg [15:0] axis_channel_en;
-    
+    wire [15:0] axis_tdest_s2mm;
     always @ (*)
     begin
-        case (axis_tdest)
+        case (axis_tdest_s2mm)
             0: axis_channel_en = 16'h1;
             1: axis_channel_en = 16'h2;
             2: axis_channel_en = 16'h4;
@@ -146,6 +159,7 @@
             13: axis_channel_en = 16'h2000;
             14: axis_channel_en = 16'h4000;
             15: axis_channel_en = 16'h8000;
+            default: axis_channel_en = 16'hffff;
         endcase
     end
     
@@ -153,16 +167,16 @@
     
     // ip2bus signals 
     //  IP Master Request/Qualifers
-    (*mark_debug = "true"*)wire lite_ip2bus_mstrd_req;
+    wire lite_ip2bus_mstrd_req;
     wire lite_ip2bus_mstwr_req;
-    (*mark_debug = "true"*)wire [C_M00_AXI_ADDR_WIDTH-1 : 0] lite_ip2bus_mst_addr;
+    wire [C_M00_AXI_ADDR_WIDTH-1 : 0] lite_ip2bus_mst_addr;
     wire [(C_M00_AXI_DATA_WIDTH/8)-1 : 0] lite_ip2bus_mst_be;
     wire lite_ip2bus_mst_lock;
     wire lite_ip2bus_mst_reset;
     //  IP Request Status Reply
-    (*mark_debug = "true"*)wire lite_bus2ip_mst_cmdack;
-    (*mark_debug = "true"*)wire lite_bus2ip_mst_cmplt;
-    (*mark_debug = "true"*)wire lite_bus2ip_mst_error;
+    wire lite_bus2ip_mst_cmdack;
+    wire lite_bus2ip_mst_cmplt;
+    wire lite_bus2ip_mst_error;
     wire lite_bus2ip_mst_rearbitrate;
     wire lite_bus2ip_mst_cmd_timeout;
     //  IPIC Read data
@@ -187,9 +201,25 @@
       //.rd_data_count(input_fifo_a1_rdcount)
     );
     
+    fifo_desc_transfer fifo_desc_transfer_inst (
+      .clk(s00_axi_aclk),                // input wire clk
+      .srst(!s00_axi_aresetn),
+      .din(descfifo_trans_din),                // input wire [31 : 0] din
+      .full(descfifo_trans_full),
+      .wr_en(descfifo_trans_wr_en),            // input wire wr_en
+      .rd_en(descfifo_trans_rd_en),            // input wire rd_en
+      .dout(descfifo_trans_dout),              // output wire [31 : 0] dout
+      .empty(descfifo_trans_empty),
+      .valid(descfifo_trans_valid)            // output wire valid
+      //.data_count(FIFORX_COUNT)
+      //.wr_data_count(input_fifo_a1_wrcount),
+      //.rd_data_count(input_fifo_a1_rdcount)
+    );
+    
     ipic_lite_state_machine # (
         .DMA_MM2S_ADDR_BASE(DMA_MM2S_ADDR_BASE),
         .DMA_S2MM_ADDR_BASE(DMA_S2MM_ADDR_BASE),
+        .DEVICE_NUMBER(DEVICE_NUMBER),
         .ADDR_WIDTH(C_M00_AXI_ADDR_WIDTH),
         .DATA_WIDTH(C_M00_AXI_DATA_WIDTH),
         .C_LENGTH_WIDTH(C_LENGTH_WIDTH)
@@ -198,12 +228,22 @@
         .reset_n(s00_axi_aresetn),
         .irq_s2mm_in(irq_s2mm_in),
         .irq_mm2s_in(irq_mm2s_in),
-        .resetn_out(resetn_out),
-        .axis_tdest(axis_tdest),
+        .axis_aclken(axis_aclken),
+        .axis_tdest_mm2s(axis_tdest_mm2s),
+        .axis_tdest_s2mm(axis_tdest_s2mm),
         .descfifo_rd_en(descfifo_rd_en), 
         .descfifo_dout(descfifo_dout),
         .descfifo_empty(descfifo_empty),
         .descfifo_valid(descfifo_valid),
+        
+        .rd_channel_valid(rd_channel_valid),
+        .mm2s_dma_valid(mm2s_dma_valid),
+        .s2mm_dma_ready(s2mm_dma_ready),
+        
+        .descfifo_trans_din(descfifo_trans_din), 
+        .descfifo_trans_full(descfifo_trans_full),
+        .descfifo_trans_wr_en(descfifo_trans_wr_en),
+        
         //IPIC LITE interface
         .ip2bus_mstrd_req(lite_ip2bus_mstrd_req),                                           //-- IPIC
         .ip2bus_mstwr_req(lite_ip2bus_mstwr_req),                                           //-- IPIC
@@ -238,6 +278,10 @@
 	    .descfifo_din(descfifo_din), 
         .descfifo_full(descfifo_full),
         .descfifo_wr_en(descfifo_wr_en),
+        
+        .descfifo_trans_rd_en(descfifo_trans_rd_en),
+        .descfifo_trans_valid(descfifo_trans_valid),
+        .descfifo_trans_dout(descfifo_trans_dout),
         
 		.S_AXI_ACLK(s00_axi_aclk),
 		.S_AXI_ARESETN(s00_axi_aresetn),

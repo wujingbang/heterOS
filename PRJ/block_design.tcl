@@ -128,8 +128,8 @@ xilinx.com:user:audio_fifo2stream_v2_0:2.0\
 xilinx.com:ip:axi_dma:7.1\
 xilinx.com:user:axidma_middleware_v1_2:1.2\
 xilinx.com:ip:axis_subset_converter:1.1\
-xilinx.com:ip:axis_switch:1.1\
-xilinx.com:user:axis_switch_1_to_n:1.0\
+xilinx.com:user:axis_switch_1_to_n:1.1\
+xilinx.com:user:axis_switch_n_to_1_v1_0:1.0\
 xilinx.com:ip:clk_wiz:6.0\
 xilinx.com:user:fft_ctrl:1.0\
 xilinx.com:user:multiply_window_delaytest:1.0\
@@ -137,6 +137,7 @@ xilinx.com:ip:processing_system7:5.5\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:system_ila:1.1\
 xilinx.com:ip:xfft:9.1\
+xilinx.com:ip:xlconcat:2.1\
 xilinx.com:ip:xlconstant:1.1\
 xilinx.com:ip:xlslice:1.0\
 "
@@ -229,8 +230,9 @@ proc create_root_design { parentCell } {
    CONFIG.c_include_s2mm_dre {0} \
    CONFIG.c_include_sg {0} \
    CONFIG.c_m_axi_s2mm_data_width {64} \
+   CONFIG.c_s2mm_burst_size {8} \
    CONFIG.c_sg_include_stscntrl_strm {0} \
-   CONFIG.c_sg_length_width {23} \
+   CONFIG.c_sg_length_width {14} \
  ] $axi_dma_0
 
   # Create instance: axi_dma_1, and set properties
@@ -268,6 +270,9 @@ proc create_root_design { parentCell } {
 
   # Create instance: axidma_middleware_v1_0, and set properties
   set axidma_middleware_v1_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:axidma_middleware_v1_2:1.2 axidma_middleware_v1_0 ]
+  set_property -dict [ list \
+   CONFIG.DEVICE_NUMBER {3} \
+ ] $axidma_middleware_v1_0
 
   # Create instance: axis_subset_converter_0, and set properties
   set axis_subset_converter_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_subset_converter:1.1 axis_subset_converter_0 ]
@@ -276,17 +281,14 @@ proc create_root_design { parentCell } {
    CONFIG.TDATA_REMAP {tdata[15:0]} \
  ] $axis_subset_converter_0
 
-  # Create instance: axis_switch_0, and set properties
-  set axis_switch_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_switch:1.1 axis_switch_0 ]
-  set_property -dict [ list \
-   CONFIG.DECODER_REG {1} \
-   CONFIG.NUM_MI {3} \
-   CONFIG.NUM_SI {1} \
-   CONFIG.TDEST_WIDTH {4} \
- ] $axis_switch_0
-
   # Create instance: axis_switch_1_to_n_0, and set properties
-  set axis_switch_1_to_n_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:axis_switch_1_to_n:1.0 axis_switch_1_to_n_0 ]
+  set axis_switch_1_to_n_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:axis_switch_1_to_n:1.1 axis_switch_1_to_n_0 ]
+  set_property -dict [ list \
+   CONFIG.AXIS_TDATA_WIDTH {64} \
+ ] $axis_switch_1_to_n_0
+
+  # Create instance: axis_switch_n_to_1_v_0, and set properties
+  set axis_switch_n_to_1_v_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:axis_switch_n_to_1_v1_0:1.0 axis_switch_n_to_1_v_0 ]
 
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
@@ -308,8 +310,8 @@ proc create_root_design { parentCell } {
   set multiply_window_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:multiply_window_delaytest:1.0 multiply_window_0 ]
   set_property -dict [ list \
    CONFIG.INPUT_DELAY_MS {0} \
-   CONFIG.NUMBER_OF_INPUT_WORDS {32} \
-   CONFIG.NUMBER_OF_OUTPUT_WORDS {32} \
+   CONFIG.NUMBER_OF_INPUT_WORDS {1024} \
+   CONFIG.NUMBER_OF_OUTPUT_WORDS {1024} \
  ] $multiply_window_0
 
   # Create instance: multiply_window_dela_0, and set properties
@@ -1144,20 +1146,24 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_0, and set properties
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {47} \
+   CONFIG.C_BRAM_CNT {51} \
    CONFIG.C_DATA_DEPTH {4096} \
    CONFIG.C_MON_TYPE {MIX} \
-   CONFIG.C_NUM_MONITOR_SLOTS {7} \
-   CONFIG.C_NUM_OF_PROBES {5} \
+   CONFIG.C_NUM_MONITOR_SLOTS {6} \
+   CONFIG.C_NUM_OF_PROBES {8} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE1_TYPE {0} \
    CONFIG.C_PROBE2_TYPE {0} \
    CONFIG.C_PROBE3_TYPE {0} \
    CONFIG.C_PROBE4_TYPE {0} \
+   CONFIG.C_PROBE5_TYPE {0} \
+   CONFIG.C_PROBE6_TYPE {0} \
+   CONFIG.C_PROBE7_TYPE {0} \
    CONFIG.C_SLOT_0_APC_EN {0} \
    CONFIG.C_SLOT_0_AXI_DATA_SEL {1} \
    CONFIG.C_SLOT_0_AXI_TRIG_SEL {1} \
    CONFIG.C_SLOT_0_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_0_TYPE {0} \
    CONFIG.C_SLOT_1_APC_EN {0} \
    CONFIG.C_SLOT_1_AXI_DATA_SEL {1} \
    CONFIG.C_SLOT_1_AXI_TRIG_SEL {1} \
@@ -1172,6 +1178,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_SLOT_3_AXI_DATA_SEL {1} \
    CONFIG.C_SLOT_3_AXI_TRIG_SEL {1} \
    CONFIG.C_SLOT_3_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_3_TYPE {0} \
    CONFIG.C_SLOT_4_APC_EN {0} \
    CONFIG.C_SLOT_4_AXI_DATA_SEL {1} \
    CONFIG.C_SLOT_4_AXI_TRIG_SEL {1} \
@@ -1180,10 +1187,6 @@ proc create_root_design { parentCell } {
    CONFIG.C_SLOT_5_AXI_DATA_SEL {1} \
    CONFIG.C_SLOT_5_AXI_TRIG_SEL {1} \
    CONFIG.C_SLOT_5_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
-   CONFIG.C_SLOT_6_APC_EN {0} \
-   CONFIG.C_SLOT_6_AXI_DATA_SEL {1} \
-   CONFIG.C_SLOT_6_AXI_TRIG_SEL {1} \
-   CONFIG.C_SLOT_6_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
  ] $system_ila_0
 
   # Create instance: xfft_0, and set properties
@@ -1196,6 +1199,12 @@ proc create_root_design { parentCell } {
    CONFIG.output_ordering {natural_order} \
    CONFIG.phase_factor_width {24} \
  ] $xfft_0
+
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.NUM_PORTS {3} \
+ ] $xlconcat_0
 
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
@@ -1237,35 +1246,32 @@ proc create_root_design { parentCell } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net S02_AXIS_1 [get_bd_intf_pins audio_fifo2stream_v2_1/m00_axis] [get_bd_intf_pins axis_switch_1_to_n_0/s02_axis]
-connect_bd_intf_net -intf_net [get_bd_intf_nets S02_AXIS_1] [get_bd_intf_pins audio_fifo2stream_v2_1/m00_axis] [get_bd_intf_pins system_ila_0/SLOT_5_AXIS]
+connect_bd_intf_net -intf_net [get_bd_intf_nets S02_AXIS_1] [get_bd_intf_pins audio_fifo2stream_v2_1/m00_axis] [get_bd_intf_pins system_ila_0/SLOT_0_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets S02_AXIS_1]
   connect_bd_intf_net -intf_net axi_dma_0_M_AXI_S2MM [get_bd_intf_pins axi_dma_0/M_AXI_S2MM] [get_bd_intf_pins axi_interconnect_0/S00_AXI]
-  connect_bd_intf_net -intf_net axi_dma_1_M_AXIS_MM2S [get_bd_intf_pins axi_dma_1/M_AXIS_MM2S] [get_bd_intf_pins axis_switch_0/S00_AXIS]
+  connect_bd_intf_net -intf_net axi_dma_1_M_AXIS_MM2S [get_bd_intf_pins axi_dma_1/M_AXIS_MM2S] [get_bd_intf_pins axis_switch_n_to_1_v_0/s00_axis]
   connect_bd_intf_net -intf_net axi_dma_1_M_AXI_MM2S [get_bd_intf_pins axi_dma_1/M_AXI_MM2S] [get_bd_intf_pins axi_interconnect_0/S02_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_interconnect_0/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0]
   connect_bd_intf_net -intf_net axi_interconnect_1_M00_AXI [get_bd_intf_pins axi_interconnect_0/S01_AXI] [get_bd_intf_pins axi_interconnect_1/M00_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_1_M01_AXI [get_bd_intf_pins axi_interconnect_1/M01_AXI] [get_bd_intf_pins processing_system7_0_axi_periph/S01_AXI]
   connect_bd_intf_net -intf_net axidma_middleware_v1_0_m00_axi_lite [get_bd_intf_pins axi_interconnect_1/S00_AXI] [get_bd_intf_pins axidma_middleware_v1_0/m00_axi_lite]
-  connect_bd_intf_net -intf_net axidma_middleware_v1_0_m01_axi_lite [get_bd_intf_pins axidma_middleware_v1_0/m01_axi_lite] [get_bd_intf_pins processing_system7_0_axi_periph/S02_AXI]
   connect_bd_intf_net -intf_net axis_data_fifo_0_M_AXIS [get_bd_intf_pins axis_switch_1_to_n_0/s01_axis] [get_bd_intf_pins multiply_window_0/M_AXIS]
-connect_bd_intf_net -intf_net [get_bd_intf_nets axis_data_fifo_0_M_AXIS] [get_bd_intf_pins multiply_window_0/M_AXIS] [get_bd_intf_pins system_ila_0/SLOT_4_AXIS]
+connect_bd_intf_net -intf_net [get_bd_intf_nets axis_data_fifo_0_M_AXIS] [get_bd_intf_pins multiply_window_0/M_AXIS] [get_bd_intf_pins system_ila_0/SLOT_3_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_data_fifo_0_M_AXIS]
   connect_bd_intf_net -intf_net axis_interconnect_0_M00_AXIS [get_bd_intf_pins axi_dma_0/S_AXIS_S2MM] [get_bd_intf_pins axis_switch_1_to_n_0/m00_axis]
-connect_bd_intf_net -intf_net [get_bd_intf_nets axis_interconnect_0_M00_AXIS] [get_bd_intf_pins axi_dma_0/S_AXIS_S2MM] [get_bd_intf_pins system_ila_0/SLOT_0_AXIS]
+connect_bd_intf_net -intf_net [get_bd_intf_nets axis_interconnect_0_M00_AXIS] [get_bd_intf_pins axi_dma_0/S_AXIS_S2MM] [get_bd_intf_pins system_ila_0/SLOT_1_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_interconnect_0_M00_AXIS]
   connect_bd_intf_net -intf_net axis_subset_converter_0_M_AXIS [get_bd_intf_pins axis_subset_converter_0/M_AXIS] [get_bd_intf_pins xfft_0/S_AXIS_CONFIG]
-  connect_bd_intf_net -intf_net axis_switch_0_M00_AXIS [get_bd_intf_pins axis_switch_0/M00_AXIS] [get_bd_intf_pins multiply_window_dela_0/S_AXIS]
-connect_bd_intf_net -intf_net [get_bd_intf_nets axis_switch_0_M00_AXIS] [get_bd_intf_pins axis_switch_0/M00_AXIS] [get_bd_intf_pins system_ila_0/SLOT_2_AXIS]
-  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_switch_0_M00_AXIS]
-  connect_bd_intf_net -intf_net axis_switch_0_M01_AXIS [get_bd_intf_pins axis_switch_0/M01_AXIS] [get_bd_intf_pins multiply_window_0/S_AXIS]
-connect_bd_intf_net -intf_net [get_bd_intf_nets axis_switch_0_M01_AXIS] [get_bd_intf_pins axis_switch_0/M01_AXIS] [get_bd_intf_pins system_ila_0/SLOT_1_AXIS]
-  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_switch_0_M01_AXIS]
-  connect_bd_intf_net -intf_net axis_switch_0_M02_AXIS [get_bd_intf_pins audio_fifo2stream_v2_1/s00_axis] [get_bd_intf_pins axis_switch_0/M02_AXIS]
-connect_bd_intf_net -intf_net [get_bd_intf_nets axis_switch_0_M02_AXIS] [get_bd_intf_pins axis_switch_0/M02_AXIS] [get_bd_intf_pins system_ila_0/SLOT_6_AXIS]
-  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_switch_0_M02_AXIS]
+  connect_bd_intf_net -intf_net axis_switch_n_to_1_v_0_m00_axis [get_bd_intf_pins axis_switch_n_to_1_v_0/m00_axis] [get_bd_intf_pins multiply_window_dela_0/S_AXIS]
+connect_bd_intf_net -intf_net [get_bd_intf_nets axis_switch_n_to_1_v_0_m00_axis] [get_bd_intf_pins multiply_window_dela_0/S_AXIS] [get_bd_intf_pins system_ila_0/SLOT_2_AXIS]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_switch_n_to_1_v_0_m00_axis]
+  connect_bd_intf_net -intf_net axis_switch_n_to_1_v_0_m01_axis [get_bd_intf_pins axis_switch_n_to_1_v_0/m01_axis] [get_bd_intf_pins multiply_window_0/S_AXIS]
+connect_bd_intf_net -intf_net [get_bd_intf_nets axis_switch_n_to_1_v_0_m01_axis] [get_bd_intf_pins multiply_window_0/S_AXIS] [get_bd_intf_pins system_ila_0/SLOT_5_AXIS]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets axis_switch_n_to_1_v_0_m01_axis]
+  connect_bd_intf_net -intf_net axis_switch_n_to_1_v_0_m02_axis [get_bd_intf_pins audio_fifo2stream_v2_1/s00_axis] [get_bd_intf_pins axis_switch_n_to_1_v_0/m02_axis]
   connect_bd_intf_net -intf_net fft_ctrl_0_M00_AXIS [get_bd_intf_pins axis_subset_converter_0/S_AXIS] [get_bd_intf_pins fft_ctrl_0/M00_AXIS]
   connect_bd_intf_net -intf_net multiply_window_dela_0_M_AXIS [get_bd_intf_pins axis_switch_1_to_n_0/s00_axis] [get_bd_intf_pins multiply_window_dela_0/M_AXIS]
-connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [get_bd_intf_pins multiply_window_dela_0/M_AXIS] [get_bd_intf_pins system_ila_0/SLOT_3_AXIS]
+connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [get_bd_intf_pins multiply_window_dela_0/M_AXIS] [get_bd_intf_pins system_ila_0/SLOT_4_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets multiply_window_dela_0_M_AXIS]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
@@ -1274,7 +1280,6 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [
   connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M00_AXI [get_bd_intf_pins audio_fifo2stream_v2_1/s_axi_config] [get_bd_intf_pins processing_system7_0_axi_periph/M00_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M01_AXI [get_bd_intf_pins axidma_middleware_v1_0/s00_axi] [get_bd_intf_pins processing_system7_0_axi_periph/M01_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M02_AXI [get_bd_intf_pins fft_ctrl_0/S00_AXI] [get_bd_intf_pins processing_system7_0_axi_periph/M02_AXI]
-  connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M03_AXI [get_bd_intf_pins axidma_middleware_v1_0/s01_axi] [get_bd_intf_pins processing_system7_0_axi_periph/M03_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M04_AXI [get_bd_intf_pins axi_dma_0/S_AXI_LITE] [get_bd_intf_pins processing_system7_0_axi_periph/M04_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M05_AXI [get_bd_intf_pins axi_dma_1/S_AXI_LITE] [get_bd_intf_pins processing_system7_0_axi_periph/M05_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_axi_periph_M06_AXI [get_bd_intf_pins axidma_middleware_v1_0/sctrl_axi] [get_bd_intf_pins processing_system7_0_axi_periph/M06_AXI]
@@ -1284,29 +1289,38 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [
   connect_bd_net -net audio_fifo2stream_v2_1_BCLK [get_bd_ports BCLK] [get_bd_pins audio_fifo2stream_v2_1/BCLK]
   connect_bd_net -net audio_fifo2stream_v2_1_LRCLK [get_bd_ports LRCLK] [get_bd_pins audio_fifo2stream_v2_1/LRCLK]
   connect_bd_net -net audio_fifo2stream_v2_1_SDATA_O [get_bd_ports SDATA_O] [get_bd_pins audio_fifo2stream_v2_1/SDATA_O]
-  connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins axi_dma_0/s2mm_introut] [get_bd_pins axidma_middleware_v1_0/irq_s2mm_in_0] [get_bd_pins system_ila_0/probe3]
+  connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins axi_dma_0/s2mm_introut] [get_bd_pins axidma_middleware_v1_0/irq_s2mm_in_0] [get_bd_pins system_ila_0/probe1]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axi_dma_0_s2mm_introut]
-  connect_bd_net -net axi_dma_1_mm2s_introut [get_bd_pins axi_dma_1/mm2s_introut] [get_bd_pins axidma_middleware_v1_0/irq_mm2s_in_0] [get_bd_pins system_ila_0/probe1]
+  connect_bd_net -net axi_dma_1_mm2s_introut [get_bd_pins axi_dma_1/mm2s_introut] [get_bd_pins axidma_middleware_v1_0/irq_mm2s_in_0] [get_bd_pins system_ila_0/probe0]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axi_dma_1_mm2s_introut]
-  connect_bd_net -net axidma_middleware_v1_0_axis_aclken_0 [get_bd_pins axidma_middleware_v1_0/axis_aclken_0] [get_bd_pins axis_switch_1_to_n_0/axis_aclken] [get_bd_pins system_ila_0/probe4]
+  connect_bd_net -net axidma_middleware_v1_0_axis_aclken_0 [get_bd_pins axidma_middleware_v1_0/axis_aclken_0] [get_bd_pins axis_switch_1_to_n_0/axis_aclken] [get_bd_pins system_ila_0/probe5]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axidma_middleware_v1_0_axis_aclken_0]
-  connect_bd_net -net axidma_middleware_v1_0_axis_suppress [get_bd_pins axidma_middleware_v1_0/axis_suppress_0] [get_bd_pins system_ila_0/probe0] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din]
+  connect_bd_net -net axidma_middleware_v1_0_axis_suppress [get_bd_pins axidma_middleware_v1_0/axis_suppress_0] [get_bd_pins system_ila_0/probe3] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axidma_middleware_v1_0_axis_suppress]
-  connect_bd_net -net axidma_middleware_v1_0_axis_tdest_0 [get_bd_pins axidma_middleware_v1_0/axis_tdest_0] [get_bd_pins axis_switch_0/s_axis_tdest] [get_bd_pins system_ila_0/probe2]
+  connect_bd_net -net axidma_middleware_v1_0_axis_tdest_0 [get_bd_pins axidma_middleware_v1_0/axis_tdest_0] [get_bd_pins axis_switch_n_to_1_v_0/s_axis_tdest] [get_bd_pins system_ila_0/probe4]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axidma_middleware_v1_0_axis_tdest_0]
   connect_bd_net -net axidma_middleware_v1_0_irq_out_0 [get_bd_pins axidma_middleware_v1_0/irq_out_0] [get_bd_pins processing_system7_0/IRQ_F2P]
+  connect_bd_net -net axis_switch_1_to_n_0_s00_valid [get_bd_pins axis_switch_1_to_n_0/s00_valid] [get_bd_pins xlconcat_0/In0]
+  connect_bd_net -net axis_switch_1_to_n_0_s01_valid [get_bd_pins axis_switch_1_to_n_0/s01_valid] [get_bd_pins xlconcat_0/In1]
+  connect_bd_net -net axis_switch_1_to_n_0_s02_valid [get_bd_pins axis_switch_1_to_n_0/s02_valid] [get_bd_pins xlconcat_0/In2]
+  connect_bd_net -net axis_switch_1_to_n_0_s2mm_rdy_dly [get_bd_pins axidma_middleware_v1_0/s2mm_dma_ready] [get_bd_pins axis_switch_1_to_n_0/s2mm_rdy_dly] [get_bd_pins system_ila_0/probe7]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axis_switch_1_to_n_0_s2mm_rdy_dly]
+  connect_bd_net -net axis_switch_n_to_1_v_0_mm2s_valid_dly [get_bd_pins axidma_middleware_v1_0/mm2s_dma_valid] [get_bd_pins axis_switch_n_to_1_v_0/mm2s_valid_dly] [get_bd_pins system_ila_0/probe6]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets axis_switch_n_to_1_v_0_mm2s_valid_dly]
   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_ports MCLK] [get_bd_pins clk_wiz_0/clk_out1]
   connect_bd_net -net fft_ctrl_0_fft_core_aresetn [get_bd_pins fft_ctrl_0/fft_core_aresetn] [get_bd_pins xfft_0/aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins audio_fifo2stream_v2_1/clk_100mhz] [get_bd_pins audio_fifo2stream_v2_1/m00_axis_aclk] [get_bd_pins audio_fifo2stream_v2_1/s00_axis_aclk] [get_bd_pins audio_fifo2stream_v2_1/s_axi_config_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_dma_1/m_axi_mm2s_aclk] [get_bd_pins axi_dma_1/s_axi_lite_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_0/S01_ACLK] [get_bd_pins axi_interconnect_0/S02_ACLK] [get_bd_pins axi_interconnect_1/ACLK] [get_bd_pins axi_interconnect_1/M00_ACLK] [get_bd_pins axi_interconnect_1/M01_ACLK] [get_bd_pins axi_interconnect_1/S00_ACLK] [get_bd_pins axidma_middleware_v1_0/m00_axi_lite_aclk] [get_bd_pins axidma_middleware_v1_0/m01_axi_lite_aclk] [get_bd_pins axidma_middleware_v1_0/s_axi_aclk] [get_bd_pins axis_subset_converter_0/aclk] [get_bd_pins axis_switch_0/aclk] [get_bd_pins axis_switch_1_to_n_0/axis_aclk] [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins fft_ctrl_0/m00_axis_aclk] [get_bd_pins fft_ctrl_0/s00_axi_aclk] [get_bd_pins multiply_window_0/aclk] [get_bd_pins multiply_window_dela_0/aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0_axi_periph/ACLK] [get_bd_pins processing_system7_0_axi_periph/M00_ACLK] [get_bd_pins processing_system7_0_axi_periph/M01_ACLK] [get_bd_pins processing_system7_0_axi_periph/M02_ACLK] [get_bd_pins processing_system7_0_axi_periph/M03_ACLK] [get_bd_pins processing_system7_0_axi_periph/M04_ACLK] [get_bd_pins processing_system7_0_axi_periph/M05_ACLK] [get_bd_pins processing_system7_0_axi_periph/M06_ACLK] [get_bd_pins processing_system7_0_axi_periph/S00_ACLK] [get_bd_pins processing_system7_0_axi_periph/S01_ACLK] [get_bd_pins processing_system7_0_axi_periph/S02_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins system_ila_0/clk] [get_bd_pins xfft_0/aclk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins audio_fifo2stream_v2_1/clk_100mhz] [get_bd_pins audio_fifo2stream_v2_1/m00_axis_aclk] [get_bd_pins audio_fifo2stream_v2_1/s00_axis_aclk] [get_bd_pins audio_fifo2stream_v2_1/s_axi_config_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_dma_1/m_axi_mm2s_aclk] [get_bd_pins axi_dma_1/s_axi_lite_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_0/S01_ACLK] [get_bd_pins axi_interconnect_0/S02_ACLK] [get_bd_pins axi_interconnect_1/ACLK] [get_bd_pins axi_interconnect_1/M00_ACLK] [get_bd_pins axi_interconnect_1/M01_ACLK] [get_bd_pins axi_interconnect_1/S00_ACLK] [get_bd_pins axidma_middleware_v1_0/m00_axi_lite_aclk] [get_bd_pins axidma_middleware_v1_0/s_axi_aclk] [get_bd_pins axis_subset_converter_0/aclk] [get_bd_pins axis_switch_1_to_n_0/axis_aclk] [get_bd_pins axis_switch_n_to_1_v_0/axis_aclk] [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins fft_ctrl_0/m00_axis_aclk] [get_bd_pins fft_ctrl_0/s00_axi_aclk] [get_bd_pins multiply_window_0/aclk] [get_bd_pins multiply_window_dela_0/aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0_axi_periph/ACLK] [get_bd_pins processing_system7_0_axi_periph/M00_ACLK] [get_bd_pins processing_system7_0_axi_periph/M01_ACLK] [get_bd_pins processing_system7_0_axi_periph/M02_ACLK] [get_bd_pins processing_system7_0_axi_periph/M03_ACLK] [get_bd_pins processing_system7_0_axi_periph/M04_ACLK] [get_bd_pins processing_system7_0_axi_periph/M05_ACLK] [get_bd_pins processing_system7_0_axi_periph/M06_ACLK] [get_bd_pins processing_system7_0_axi_periph/S00_ACLK] [get_bd_pins processing_system7_0_axi_periph/S01_ACLK] [get_bd_pins processing_system7_0_axi_periph/S02_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins system_ila_0/clk] [get_bd_pins xfft_0/aclk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
   connect_bd_net -net rst_ps7_0_100M_interconnect_aresetn [get_bd_pins processing_system7_0_axi_periph/ARESETN] [get_bd_pins rst_ps7_0_100M/interconnect_aresetn]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins audio_fifo2stream_v2_1/aresetn] [get_bd_pins audio_fifo2stream_v2_1/m00_axis_aresetn] [get_bd_pins audio_fifo2stream_v2_1/s00_axis_aresetn] [get_bd_pins audio_fifo2stream_v2_1/s_axi_config_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_dma_1/axi_resetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_0/S01_ARESETN] [get_bd_pins axi_interconnect_0/S02_ARESETN] [get_bd_pins axi_interconnect_1/ARESETN] [get_bd_pins axi_interconnect_1/M00_ARESETN] [get_bd_pins axi_interconnect_1/M01_ARESETN] [get_bd_pins axi_interconnect_1/S00_ARESETN] [get_bd_pins axidma_middleware_v1_0/m00_axi_lite_aresetn] [get_bd_pins axidma_middleware_v1_0/m01_axi_lite_aresetn] [get_bd_pins axidma_middleware_v1_0/s_axi_aresetn] [get_bd_pins axis_subset_converter_0/aresetn] [get_bd_pins axis_switch_0/aresetn] [get_bd_pins axis_switch_1_to_n_0/axis_aresetn] [get_bd_pins fft_ctrl_0/m00_axis_aresetn] [get_bd_pins fft_ctrl_0/s00_axi_aresetn] [get_bd_pins multiply_window_0/aresetn] [get_bd_pins multiply_window_dela_0/aresetn] [get_bd_pins processing_system7_0_axi_periph/M00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M01_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M02_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M03_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M04_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M05_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M06_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S01_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S02_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins system_ila_0/resetn]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins audio_fifo2stream_v2_1/aresetn] [get_bd_pins audio_fifo2stream_v2_1/m00_axis_aresetn] [get_bd_pins audio_fifo2stream_v2_1/s00_axis_aresetn] [get_bd_pins audio_fifo2stream_v2_1/s_axi_config_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_dma_1/axi_resetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_0/S01_ARESETN] [get_bd_pins axi_interconnect_0/S02_ARESETN] [get_bd_pins axi_interconnect_1/ARESETN] [get_bd_pins axi_interconnect_1/M00_ARESETN] [get_bd_pins axi_interconnect_1/M01_ARESETN] [get_bd_pins axi_interconnect_1/S00_ARESETN] [get_bd_pins axidma_middleware_v1_0/m00_axi_lite_aresetn] [get_bd_pins axidma_middleware_v1_0/s_axi_aresetn] [get_bd_pins axis_subset_converter_0/aresetn] [get_bd_pins axis_switch_1_to_n_0/axis_aresetn] [get_bd_pins axis_switch_n_to_1_v_0/axis_aresetn] [get_bd_pins fft_ctrl_0/m00_axis_aresetn] [get_bd_pins fft_ctrl_0/s00_axi_aresetn] [get_bd_pins multiply_window_0/aresetn] [get_bd_pins multiply_window_dela_0/aresetn] [get_bd_pins processing_system7_0_axi_periph/M00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M01_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M02_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M03_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M04_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M05_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M06_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S01_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S02_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins system_ila_0/resetn]
   connect_bd_net -net xfft_0_event_data_in_channel_halt [get_bd_pins fft_ctrl_0/event_data_in_channel_halt] [get_bd_pins xfft_0/event_data_in_channel_halt]
   connect_bd_net -net xfft_0_event_data_out_channel_halt [get_bd_pins fft_ctrl_0/event_data_out_channel_halt] [get_bd_pins xfft_0/event_data_out_channel_halt]
   connect_bd_net -net xfft_0_event_frame_started [get_bd_pins fft_ctrl_0/event_frame_started] [get_bd_pins xfft_0/event_frame_started]
   connect_bd_net -net xfft_0_event_status_channel_halt [get_bd_pins fft_ctrl_0/event_status_channel_halt] [get_bd_pins xfft_0/event_status_channel_halt]
   connect_bd_net -net xfft_0_event_tlast_missing [get_bd_pins fft_ctrl_0/event_tlast_missing] [get_bd_pins xfft_0/event_tlast_missing]
   connect_bd_net -net xfft_0_event_tlast_unexpected [get_bd_pins fft_ctrl_0/event_tlast_unexpected] [get_bd_pins xfft_0/event_tlast_unexpected]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins axidma_middleware_v1_0/rd_channel_valid] [get_bd_pins system_ila_0/probe2] [get_bd_pins xlconcat_0/dout]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets xlconcat_0_dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_ports addrbit0] [get_bd_ports addrbit1] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins fft_ctrl_0/event_fft_overflow] [get_bd_pins xlconstant_1/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins axis_switch_1_to_n_0/s00_suppress] [get_bd_pins xlslice_0/Dout]
@@ -1317,25 +1331,16 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces axi_dma_0/Data_S2MM] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces axi_dma_1/Data_MM2S] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM
   create_bd_addr_seg -range 0x00001000 -offset 0x40002000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs audio_fifo2stream_v2_1/s_axi_config/reg0] SEG_audio_fifo2stream_v2_1_reg0
-  create_bd_addr_seg -range 0x00001000 -offset 0x40002000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs audio_fifo2stream_v2_1/s_axi_config/reg0] SEG_audio_fifo2stream_v2_1_reg0
   create_bd_addr_seg -range 0x00010000 -offset 0x40400000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x40400000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41E00000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs axi_dma_1/S_AXI_LITE/Reg] SEG_axi_dma_1_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x41E00000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs axi_dma_1/S_AXI_LITE/Reg] SEG_axi_dma_1_Reg
   create_bd_addr_seg -range 0x00001000 -offset 0x40000000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs axidma_middleware_v1_0/s00_axi/reg0] SEG_axidma_middleware_v1_0_reg0
-  create_bd_addr_seg -range 0x00001000 -offset 0x40000000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs axidma_middleware_v1_0/s00_axi/reg0] SEG_axidma_middleware_v1_0_reg0
   create_bd_addr_seg -range 0x00001000 -offset 0x40003000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs axidma_middleware_v1_0/sctrl_axi/reg0] SEG_axidma_middleware_v1_0_reg04
-  create_bd_addr_seg -range 0x00001000 -offset 0x40001000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs axidma_middleware_v1_0/s01_axi/reg0] SEG_axidma_middleware_v1_0_reg05
-  create_bd_addr_seg -range 0x00001000 -offset 0x40001000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs axidma_middleware_v1_0/s01_axi/reg0] SEG_axidma_middleware_v1_0_reg05
-  create_bd_addr_seg -range 0x00001000 -offset 0x40003000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs axidma_middleware_v1_0/sctrl_axi/reg0] SEG_axidma_middleware_v1_0_reg06
   create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs fft_ctrl_0/S00_AXI/S00_AXI_reg] SEG_fft_ctrl_0_S00_AXI_reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces axidma_middleware_v1_0/m01_axi_lite] [get_bd_addr_segs fft_ctrl_0/S00_AXI/S00_AXI_reg] SEG_fft_ctrl_0_S00_AXI_reg
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces axidma_middleware_v1_0/m00_axi_lite] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM
   create_bd_addr_seg -range 0x00001000 -offset 0x40002000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs audio_fifo2stream_v2_1/s_axi_config/reg0] SEG_audio_fifo2stream_v2_1_reg0
   create_bd_addr_seg -range 0x00010000 -offset 0x40400000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41E00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_dma_1/S_AXI_LITE/Reg] SEG_axi_dma_1_Reg
   create_bd_addr_seg -range 0x00001000 -offset 0x40000000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axidma_middleware_v1_0/s00_axi/reg0] SEG_axidma_middleware_v1_0_reg0
-  create_bd_addr_seg -range 0x00001000 -offset 0x40001000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axidma_middleware_v1_0/s01_axi/reg0] SEG_axidma_middleware_v1_0_reg01
   create_bd_addr_seg -range 0x00001000 -offset 0x40003000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axidma_middleware_v1_0/sctrl_axi/reg0] SEG_axidma_middleware_v1_0_reg02
   create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs fft_ctrl_0/S00_AXI/S00_AXI_reg] SEG_fft_ctrl_0_S00_AXI_reg
 
@@ -1343,6 +1348,7 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [
   # Restore current instance
   current_bd_instance $oldCurInst
 
+  validate_bd_design
   save_bd_design
 }
 # End of create_root_design()
@@ -1354,6 +1360,4 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets multiply_window_dela_0_M_AXIS] [
 
 create_root_design ""
 
-
-common::send_msg_id "BD_TCL-1000" "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 

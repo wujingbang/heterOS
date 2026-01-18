@@ -1,7 +1,7 @@
 
 `timescale 1 ns / 1 ps
 
-	module watermark_v1_1_S00_AXI #
+	module axidma_middleware_S_AXI_CONFIG #
 	(
 		// Users to add parameters here
 
@@ -80,13 +80,7 @@
     		// accept the read data and response information.
 		input wire  S_AXI_RREADY,
 		
-		output wire [15:0] delta_strength,
-		output wire [255:0] encodedbits,
-        output wire [15:0] hactive,
-        output wire [15:0] vactive,
-        output wire [15:0] block_count_max,
-        output wire watermark_disable,
-        output wire reset_reg
+        output wire user_reset_reg
 	);
 
 	// AXI4LITE signals
@@ -145,31 +139,25 @@
 	assign S_AXI_RRESP	= axi_rresp;
 	assign S_AXI_RVALID	= axi_rvalid;
 	
-	initial begin
-        slv_reg8 <= 1920;
-        slv_reg9 <= 1080;
-        slv_reg10 <= 120;
-        slv_reg15 <= 0;
-    end
 	
-	assign encodedbits[0 +: 32] = slv_reg0;
-	assign encodedbits[32 +: 32] = slv_reg1;
-	assign encodedbits[64 +: 32] = slv_reg2;
-	assign encodedbits[96 +: 32] = slv_reg3;
-	assign encodedbits[128 +: 32] = slv_reg4;
-	assign encodedbits[160 +: 32] = slv_reg5;
-	assign encodedbits[192 +: 32] = slv_reg6;
-	assign encodedbits[224 +: 32] = slv_reg7;
+//	assign encodedbits[0 +: 32] = slv_reg0;
+//	assign encodedbits[32 +: 32] = slv_reg1;
+//	assign encodedbits[64 +: 32] = slv_reg2;
+//	assign encodedbits[96 +: 32] = slv_reg3;
+//	assign encodedbits[128 +: 32] = slv_reg4;
+//	assign encodedbits[160 +: 32] = slv_reg5;
+//	assign encodedbits[192 +: 32] = slv_reg6;
+//	assign encodedbits[224 +: 32] = slv_reg7;
 
-	assign hactive[0 +: 16] = slv_reg8[0 +: 16];
-	assign vactive[0 +: 16] = slv_reg9[0 +: 16];
-	assign block_count_max[0 +: 16] = slv_reg10[0 +: 16];
+//	assign hactive[0 +: 16] = slv_reg8[0 +: 16];
+//	assign vactive[0 +: 16] = slv_reg9[0 +: 16];
+//	assign block_count_max[0 +: 16] = slv_reg10[0 +: 16];
 	
-	assign delta_strength = slv_reg11[0 +: 16];
+//	assign delta_strength = slv_reg11[0 +: 16];
 	
-	assign watermark_disable = slv_reg13[0];
+//	assign watermark_disable = slv_reg13[0];
 	
-	assign reset_reg = slv_reg15[0];
+	assign user_reset_reg = slv_reg0[0];
 	
 	// Implement axi_awready generation
 	// axi_awready is asserted for one S_AXI_ACLK clock cycle when both

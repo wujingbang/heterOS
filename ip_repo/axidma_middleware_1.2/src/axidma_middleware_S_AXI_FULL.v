@@ -30,6 +30,10 @@
         output reg descfifo_wr_en,
         input wire descfifo_full,
         output reg [31:0] descfifo_din,
+        
+        output reg descfifo_trans_rd_en,
+        input wire descfifo_trans_valid,
+        input wire [127:0] descfifo_trans_dout,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -597,25 +601,185 @@
 //	  end       
 //	endgenerate
 	
-	wire mem_wren;
+	(*mark_debug = "true"*)wire mem_wren;
 	assign mem_wren = axi_wready && S_AXI_WVALID ;
+	(*mark_debug = "true"*)reg [3:0]curr_rd_state;
+	reg [3:0]next_rd_state;
 	
+	(*mark_debug = "true"*)reg memfifo_wr_en;
+    (*mark_debug = "true"*)wire memfifo_full;
+    reg [31:0] memfifo_din;
+    (*mark_debug = "true"*)reg memfifo_rd_en;
+    (*mark_debug = "true"*)wire memfifo_empty;
+    (*mark_debug = "true"*)wire memfifo_valid;
+    wire [31:0] memfifo_dout;
+    
+	fifo_mem fifo_mem_inst (
+      .clk(S_AXI_ACLK),                // input wire clk
+      .srst(!S_AXI_ARESETN),
+      .din(memfifo_din),                // input wire [31 : 0] din
+      .full(memfifo_full),
+      .wr_en(memfifo_wr_en),            // input wire wr_en
+      .rd_en(memfifo_rd_en),            // input wire rd_en
+      .dout(memfifo_dout),              // output wire [31 : 0] dout
+      .empty(memfifo_empty),
+      .valid(memfifo_valid)            // output wire valid
+      //.data_count(FIFORX_COUNT)
+      //.wr_data_count(input_fifo_a1_wrcount),
+      //.rd_data_count(input_fifo_a1_rdcount)
+    );
 	always @( posedge S_AXI_ACLK )
     begin
       if (!S_AXI_ARESETN) begin
-        descfifo_wr_en <= 0;
-        descfifo_din <= 0;
+        memfifo_wr_en <= 0;
+        memfifo_din <= 0;
       end else begin
-        if (mem_wren)
-        begin
-            descfifo_din <= S_AXI_WDATA;
-            descfifo_wr_en <= 1;
+        if (mem_wren) begin
+            memfifo_din <= S_AXI_WDATA;
+            memfifo_wr_en <= 1;
         end else begin
-            descfifo_wr_en <= 0;
+            memfifo_din <= 0;
+            memfifo_wr_en <= 0;
         end
-       end
-           
+      end
     end
+    
+    localparam RD_IDLE=0,RD_MEM_0=1,RD_MEM_WAIT_0=2,
+                        RD_MEM_1=3,RD_MEM_WAIT_1=4,
+                        RD_MEM_2=5,RD_MEM_WAIT_2=6,
+                        RD_MEM_3=7,
+                        RD_TRANS_0=8, RD_TRANS_1=9, RD_TRANS_2=10, RD_TRANS_3=11,
+                        RD_ERROR = 15;
+    
+    always @ (posedge S_AXI_ACLK)
+    begin
+        if ( S_AXI_ARESETN == 0 )
+            curr_rd_state <= RD_IDLE;
+        else
+            curr_rd_state <= next_rd_state;
+    end
+    
+    always @ (*)//process_line_starting or ipic_done_wire or curr_process_state)
+    begin
+        case (curr_rd_state)
+            RD_IDLE: 
+                if (memfifo_valid)
+                    next_rd_state <= RD_MEM_0;
+                else if (descfifo_trans_valid)
+                    next_rd_state <= RD_TRANS_0;
+                else
+                    next_rd_state <= RD_IDLE;
+            RD_MEM_0: next_rd_state <= RD_MEM_WAIT_0;
+            RD_MEM_WAIT_0:
+                if (memfifo_valid)
+                    next_rd_state <= RD_MEM_1;
+                else
+                    next_rd_state <= RD_MEM_WAIT_0;
+            RD_MEM_1: next_rd_state <= RD_MEM_WAIT_1;
+            RD_MEM_WAIT_1:
+                if (memfifo_valid)
+                    next_rd_state <= RD_MEM_2;
+                else
+                    next_rd_state <= RD_MEM_WAIT_1;
+            RD_MEM_2: next_rd_state <= RD_MEM_WAIT_2;
+            RD_MEM_WAIT_2:
+                if (memfifo_valid)
+                    next_rd_state <= RD_MEM_3;
+                else
+                    next_rd_state <= RD_MEM_WAIT_2;
+            RD_MEM_3: next_rd_state <= RD_IDLE;
+
+            RD_TRANS_0: next_rd_state <= RD_TRANS_1;
+            RD_TRANS_1: next_rd_state <= RD_TRANS_2;
+            RD_TRANS_2: next_rd_state <= RD_TRANS_3;
+            RD_TRANS_3: next_rd_state <= RD_IDLE;
+            
+            default: begin
+                next_rd_state <= RD_ERROR;
+            end
+        endcase
+    end
+    
+    always @ (posedge S_AXI_ACLK)
+    begin
+        if (S_AXI_ARESETN == 0)
+        begin
+            descfifo_wr_en <= 0;
+            descfifo_din <= 0;
+            descfifo_trans_rd_en <= 0;
+            memfifo_rd_en <= 0;
+        end
+        else
+        begin
+            case (next_rd_state)
+            RD_IDLE: begin
+                descfifo_wr_en <= 0;
+                descfifo_din <= 0;
+                descfifo_trans_rd_en <= 0;
+                memfifo_rd_en <= 0;
+            end
+            RD_MEM_0: begin
+                memfifo_rd_en <= 1;
+                descfifo_din <= memfifo_dout;
+                descfifo_wr_en <= 1;
+            end
+            RD_MEM_WAIT_0: begin
+                memfifo_rd_en <= 0;
+                descfifo_wr_en <= 0;
+            end
+            RD_MEM_1: begin
+                memfifo_rd_en <= 1;
+                descfifo_din <= memfifo_dout;
+                descfifo_wr_en <= 1;
+            end
+            RD_MEM_WAIT_1: begin
+                memfifo_rd_en <= 0;
+                descfifo_wr_en <= 0;
+            end
+            RD_MEM_2: begin
+                memfifo_rd_en <= 1;
+                descfifo_din <= memfifo_dout;
+                descfifo_wr_en <= 1;
+            end
+            RD_MEM_WAIT_2: begin
+                memfifo_rd_en <= 0;
+                descfifo_wr_en <= 0;
+            end
+            RD_MEM_3: begin
+                memfifo_rd_en <= 1;
+                descfifo_din <= memfifo_dout;
+                descfifo_wr_en <= 1;
+            end
+            
+            RD_TRANS_0: begin
+                descfifo_din <= descfifo_trans_dout[127-:32];
+                descfifo_wr_en <= 1;
+                descfifo_trans_rd_en <= 1;
+            end
+            RD_TRANS_1: begin
+                descfifo_din <= descfifo_trans_dout[95-:32];
+                descfifo_wr_en <= 1;
+                descfifo_trans_rd_en <= 1;
+            end
+            RD_TRANS_2: begin
+                descfifo_din <= descfifo_trans_dout[63-:32];
+                descfifo_wr_en <= 1;
+                descfifo_trans_rd_en <= 1;
+            end
+            RD_TRANS_3: begin
+                descfifo_din <= descfifo_trans_dout[31-:32];
+                descfifo_wr_en <= 1;
+                descfifo_trans_rd_en <= 1;
+            end
+
+            default: begin
+                
+            end
+            endcase
+        end
+    end
+        
+
     
     
 //	reg[2:0] fifopush_state;

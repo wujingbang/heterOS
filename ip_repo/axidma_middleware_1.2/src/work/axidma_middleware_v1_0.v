@@ -7,8 +7,9 @@
         parameter integer CH0_DMA_MM2S_ADDR_BASE = 32'h41E00000,
         parameter integer CH0_DMA_S2MM_ADDR_BASE = 32'h40400000,
         
-        parameter integer CH1_DMA_MM2S_ADDR_BASE = 32'h41E00000,
-        parameter integer CH1_DMA_S2MM_ADDR_BASE = 32'h40400000,
+//        parameter integer CH1_DMA_MM2S_ADDR_BASE = 32'h41E00000,
+//        parameter integer CH1_DMA_S2MM_ADDR_BASE = 32'h40400000,
+        parameter integer DEVICE_NUMBER = 4,
        
 		// User parameters ends
 		// Do not modify the parameters beyond this line
@@ -39,15 +40,20 @@
         input wire irq_mm2s_in_0,
         output wire irq_out_0,
         output wire [3:0] axis_tdest_0,
-        output wire [15:0] axis_suppress_0,
+        output wire [DEVICE_NUMBER-1:0] axis_suppress_0,
         output wire axis_aclken_0,
         
-        input wire irq_s2mm_in_1,
-        input wire irq_mm2s_in_1,
-        output wire irq_out_1,
-        output wire [3:0] axis_tdest_1,
-        output wire [15:0] axis_suppress_1,
-        output wire resetn_out_1,
+        input wire [DEVICE_NUMBER-1:0] mm2s_dma_valid,
+        input wire [DEVICE_NUMBER-1:0] s2mm_dma_ready,
+        
+        (*mark_debug = "true"*)input wire [DEVICE_NUMBER-1:0] rd_channel_valid,
+        
+//        input wire irq_s2mm_in_1,
+//        input wire irq_mm2s_in_1,
+//        output wire irq_out_1,
+//        output wire [3:0] axis_tdest_1,
+//        output wire [15:0] axis_suppress_1,
+//        output wire resetn_out_1,
 		// Ports of Axi Slave Bus Interface Scontrol_AXI
 		input wire  s_axi_aclk,
 		input wire  s_axi_aresetn,
@@ -143,8 +149,8 @@
 		output wire  s00_axi_rlast,
 		output wire [C_S_AXI_RUSER_WIDTH-1 : 0] s00_axi_ruser,
 		output wire  s00_axi_rvalid,
-		input wire  s00_axi_rready,
-		
+		input wire  s00_axi_rready
+/*		
 		// Ports of Axi Master Bus Interface M00_AXI
 //		input wire  m01_axi_lite_init_axi_txn,
 //		output wire  m01_axi_lite_error,
@@ -218,11 +224,13 @@
 		output wire [C_S_AXI_RUSER_WIDTH-1 : 0] s01_axi_ruser,
 		output wire  s01_axi_rvalid,
 		input wire  s01_axi_rready
+		*/
 	);
     
     dma_channel # (
         .DMA_MM2S_ADDR_BASE(CH0_DMA_MM2S_ADDR_BASE),
         .DMA_S2MM_ADDR_BASE(CH0_DMA_S2MM_ADDR_BASE),
+        .DEVICE_NUMBER(DEVICE_NUMBER),
         .C_LENGTH_WIDTH(C_LENGTH_WIDTH),
 		.C_M00_AXI_ADDR_WIDTH(C_M_AXI_ADDR_WIDTH),
 		.C_M00_AXI_DATA_WIDTH(C_M_AXI_DATA_WIDTH),
@@ -243,6 +251,10 @@
         .axis_suppress(axis_suppress_0),
         .axis_aclken(axis_aclken_0),
         //.resetn_out(dma_resetn_out_0),
+        
+        .rd_channel_valid(rd_channel_valid),
+        .mm2s_dma_valid(mm2s_dma_valid),
+        .s2mm_dma_ready(s2mm_dma_ready),
         
         .s00_axi_aclk(s_axi_aclk),
 		.s00_axi_aresetn(s_axi_aresetn),
