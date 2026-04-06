@@ -29,7 +29,7 @@
 		// Users to add ports here
         output reg descfifo_wr_en,
         input wire descfifo_full,
-        output reg [31:0] descfifo_din,
+        output reg [127:0] descfifo_din,
         
         output reg descfifo_trans_rd_en,
         input wire descfifo_trans_valid,
@@ -648,7 +648,7 @@
                         RD_MEM_1=3,RD_MEM_WAIT_1=4,
                         RD_MEM_2=5,RD_MEM_WAIT_2=6,
                         RD_MEM_3=7,
-                        RD_TRANS_0=8, RD_TRANS_1=9, RD_TRANS_2=10, RD_TRANS_3=11,
+                        RD_TRANS_0=9, RD_TRANS_1=10, RD_TRANS_2=11, RD_TRANS_3=12,
                         RD_ERROR = 15;
     
     always @ (posedge S_AXI_ACLK)
@@ -689,10 +689,12 @@
                     next_rd_state <= RD_MEM_WAIT_2;
             RD_MEM_3: next_rd_state <= RD_IDLE;
 
-            RD_TRANS_0: next_rd_state <= RD_TRANS_1;
-            RD_TRANS_1: next_rd_state <= RD_TRANS_2;
-            RD_TRANS_2: next_rd_state <= RD_TRANS_3;
-            RD_TRANS_3: next_rd_state <= RD_IDLE;
+            //RD_TRANS_RD_EN: next_rd_state <= RD_TRANS_0;
+            RD_TRANS_0: next_rd_state <= RD_IDLE;
+//            RD_TRANS_0: next_rd_state <= RD_TRANS_1;
+//            RD_TRANS_1: next_rd_state <= RD_TRANS_2;
+//            RD_TRANS_2: next_rd_state <= RD_TRANS_3;
+//            RD_TRANS_3: next_rd_state <= RD_IDLE;
             
             default: begin
                 next_rd_state <= RD_ERROR;
@@ -714,63 +716,67 @@
             case (next_rd_state)
             RD_IDLE: begin
                 descfifo_wr_en <= 0;
-                descfifo_din <= 0;
+                //descfifo_din <= 0;
                 descfifo_trans_rd_en <= 0;
                 memfifo_rd_en <= 0;
             end
             RD_MEM_0: begin
                 memfifo_rd_en <= 1;
-                descfifo_din <= memfifo_dout;
-                descfifo_wr_en <= 1;
+                descfifo_din[127-:32] <= memfifo_dout;
+                //descfifo_wr_en <= 1;
             end
             RD_MEM_WAIT_0: begin
                 memfifo_rd_en <= 0;
-                descfifo_wr_en <= 0;
+                //descfifo_wr_en <= 0;
             end
             RD_MEM_1: begin
                 memfifo_rd_en <= 1;
-                descfifo_din <= memfifo_dout;
-                descfifo_wr_en <= 1;
+                descfifo_din[95-:32] <= memfifo_dout;
+                //descfifo_wr_en <= 1;
             end
             RD_MEM_WAIT_1: begin
                 memfifo_rd_en <= 0;
-                descfifo_wr_en <= 0;
+                //descfifo_wr_en <= 0;
             end
             RD_MEM_2: begin
                 memfifo_rd_en <= 1;
-                descfifo_din <= memfifo_dout;
-                descfifo_wr_en <= 1;
+                descfifo_din[63-:32] <= memfifo_dout;
+                //descfifo_wr_en <= 1;
             end
             RD_MEM_WAIT_2: begin
                 memfifo_rd_en <= 0;
-                descfifo_wr_en <= 0;
+                //descfifo_wr_en <= 0;
             end
             RD_MEM_3: begin
                 memfifo_rd_en <= 1;
-                descfifo_din <= memfifo_dout;
+                descfifo_din[31-:32] <= memfifo_dout;
                 descfifo_wr_en <= 1;
             end
             
+//            RD_TRANS_RD_EN: begin
+//                descfifo_trans_rd_en <= 1;
+//            end
             RD_TRANS_0: begin
-                descfifo_din <= descfifo_trans_dout[127-:32];
+                descfifo_din <= descfifo_trans_dout;
+//                descfifo_din <= descfifo_trans_dout[127-:32];
                 descfifo_wr_en <= 1;
                 descfifo_trans_rd_en <= 1;
             end
-            RD_TRANS_1: begin
-                descfifo_din <= descfifo_trans_dout[95-:32];
-                descfifo_wr_en <= 1;
-                descfifo_trans_rd_en <= 1;
-            end
-            RD_TRANS_2: begin
-                descfifo_din <= descfifo_trans_dout[63-:32];
-                descfifo_wr_en <= 1;
-                descfifo_trans_rd_en <= 1;
-            end
-            RD_TRANS_3: begin
-                descfifo_din <= descfifo_trans_dout[31-:32];
-                descfifo_wr_en <= 1;
-                descfifo_trans_rd_en <= 1;
-            end
+//            RD_TRANS_1: begin
+//                descfifo_din <= descfifo_trans_dout[95-:32];
+//                descfifo_wr_en <= 1;
+//                descfifo_trans_rd_en <= 0;
+//            end
+//            RD_TRANS_2: begin
+//                descfifo_din <= descfifo_trans_dout[63-:32];
+//                descfifo_wr_en <= 1;
+                
+//            end
+//            RD_TRANS_3: begin
+//                descfifo_din <= descfifo_trans_dout[31-:32];
+//                descfifo_wr_en <= 1;
+                
+//            end
 
             default: begin
                 

@@ -42,6 +42,7 @@ module ipic_lite_state_machine#(
         (*mark_debug = "true"*)output reg [3:0] axis_tdest_mm2s,
         (*mark_debug = "true"*)output reg [15:0] axis_tdest_s2mm,
         
+        output reg s2mm_working,
         //  IP Master Request/Qualifers
         output     reg                     ip2bus_mstrd_req,
         output  reg                     ip2bus_mstwr_req,
@@ -62,8 +63,8 @@ module ipic_lite_state_machine#(
         output     reg     [DATA_WIDTH-1 : 0]        ip2bus_mstwr_d,
         input     wire                     bus2ip_mstwr_dst_rdy_n,     
         //USER LOGIC
-        input wire [DEVICE_NUMBER-1:0] rd_channel_valid,
-        input wire [DEVICE_NUMBER-1:0] mm2s_dma_valid,
+        (*mark_debug = "true"*)input wire [DEVICE_NUMBER-1:0] rd_channel_valid,
+        (*mark_debug = "true"*)input wire [DEVICE_NUMBER-1:0] mm2s_dma_valid,
         input wire [DEVICE_NUMBER-1:0] s2mm_dma_ready,
         
         output reg descfifo_rd_en,
@@ -127,6 +128,11 @@ module ipic_lite_state_machine#(
     reg [31:0] desc_cmd;
     reg [31:0] desc_addr;
     
+    reg [31:0] desc_inaddr_tmp;
+    reg [31:0] desc_outaddr_tmp;
+    (*mark_debug = "true"*)reg [31:0] desc_cmd_tmp;
+    reg [31:0] desc_addr_tmp;
+    
 //    reg [31:0] desc_inaddr_s2mm;
     reg [31:0] desc_outaddr_s2mm;
     reg [31:0] desc_cmd_s2mm;
@@ -169,7 +175,7 @@ module ipic_lite_state_machine#(
     
     reg s2mm_start;
     reg mm2s_start;
-    reg s2mm_working;
+    
     reg mm2s_working;
     reg s2mm_done;
     reg mm2s_done;
@@ -186,15 +192,16 @@ module ipic_lite_state_machine#(
     reg [5:0] next_s2mm_state;
     
     (*mark_debug = "true"*)reg [2:0] select_channel;
+    reg [2:0] select_channel_tmp;
     
 //    (*mark_debug = "true"*)reg rdboth_flag;
     
-    localparam DISP_IDLE=0, DISP_RD_FIFO=1,DISP_DISPATCH=2, 
-                DISP_S2MM_START=3, DISP_S2MM_WAIT=4,
-                DISP_MM2S_START=5, DISP_MM2S_WAIT=6,
+    localparam DISP_IDLE=0, DISP_RD_FIFO=1, DISP_DISPATCH=3, 
+                DISP_S2MM_START=4, DISP_S2MM_WAIT=5,
+                DISP_MM2S_START=6, DISP_MM2S_WAIT=7,
                 //DISP_SEND_IRQ_0 = 7, DISP_SEND_IRQ_WAIT=8,
-                DISP_S2MM_CHECK=7, DISP_S2MM_RESTORE=8,
-                DISP_ERROR=9;
+                DISP_S2MM_CHECK=8, DISP_S2MM_RESTORE=9,
+                DISP_ERROR=15;
 
 always @ (posedge clk)
 begin
@@ -214,27 +221,29 @@ begin
                 next_dispatch_state <= DISP_IDLE;
         DISP_RD_FIFO: next_dispatch_state <= DISP_DISPATCH;
         DISP_DISPATCH: 
-            if (desc_cmd[CMD_RW_BIT_E:CMD_RW_BIT_S] == `S2MM_FLAG || desc_cmd[CMD_RW_BIT_E:CMD_RW_BIT_S] == `RWBOTH_FLAG)
-                next_dispatch_state <= DISP_S2MM_CHECK;
-            else if (desc_cmd[CMD_RW_BIT_E:CMD_RW_BIT_S] == `MM2S_FLAG)
+            if (desc_cmd_tmp[CMD_RW_BIT_E:CMD_RW_BIT_S] == `S2MM_FLAG || desc_cmd_tmp[CMD_RW_BIT_E:CMD_RW_BIT_S] == `RWBOTH_FLAG)
+                next_dispatch_state <= DISP_S2MM_WAIT;
+            else if (desc_cmd_tmp[CMD_RW_BIT_E:CMD_RW_BIT_S] == `MM2S_FLAG)
                 next_dispatch_state <= DISP_MM2S_WAIT;
-            else if (desc_cmd[CMD_RW_BIT_E:CMD_RW_BIT_S] == `TEST_FLAG)
+            else if (desc_cmd_tmp[CMD_RW_BIT_E:CMD_RW_BIT_S] == `TEST_FLAG)
                 next_dispatch_state <= DISP_IDLE;
             else
                 next_dispatch_state <= DISP_ERROR;
+        DISP_S2MM_WAIT:
+			if (!s2mm_working)
+				next_dispatch_state <= DISP_S2MM_CHECK;
+			else
+				next_dispatch_state <= DISP_S2MM_RESTORE;
+				
         DISP_S2MM_CHECK: 
-            if (rd_channel_valid[select_channel] == 0) 
+            if (rd_channel_valid[select_channel_tmp] == 0) 
                 next_dispatch_state <= DISP_S2MM_RESTORE;
             else
-                next_dispatch_state <= DISP_S2MM_WAIT;
+                next_dispatch_state <= DISP_S2MM_START;
         DISP_S2MM_RESTORE:
             next_dispatch_state <= DISP_IDLE;
                 
-        DISP_S2MM_WAIT:
-			if (!s2mm_working)
-				next_dispatch_state <= DISP_S2MM_START;
-			else
-				next_dispatch_state <= DISP_S2MM_WAIT;
+        
         DISP_S2MM_START: next_dispatch_state <= DISP_IDLE;
         
         DISP_MM2S_WAIT:
@@ -273,10 +282,11 @@ begin
         end
         DISP_RD_FIFO: begin
             descfifo_rd_en <= 1;
-            desc_inaddr <= descfifo_dout[((FIFOWIDTH-INADDR_WORDPOS)*32 -1) -: 32];
-            desc_outaddr <= descfifo_dout[((FIFOWIDTH-OUTADDR_WORDPOS)*32 -1) -: 32];
-            desc_cmd <= descfifo_dout[((FIFOWIDTH-OPCODE_WORDPOS)*32 -1) -: 32];
-            desc_addr <= descfifo_dout[((FIFOWIDTH-DESCADDR_WORDPOS)*32 -1) -: 32];
+
+            desc_inaddr_tmp <= descfifo_dout[((FIFOWIDTH-INADDR_WORDPOS)*32 -1) -: 32];
+            desc_outaddr_tmp <= descfifo_dout[((FIFOWIDTH-OUTADDR_WORDPOS)*32 -1) -: 32];
+            desc_cmd_tmp <= descfifo_dout[((FIFOWIDTH-OPCODE_WORDPOS)*32 -1) -: 32];
+            desc_addr_tmp <= descfifo_dout[((FIFOWIDTH-DESCADDR_WORDPOS)*32 -1) -: 32];
             descfifo_trans_din <= descfifo_dout;
         end
         DISP_DISPATCH: begin
@@ -284,7 +294,7 @@ begin
 //                rdboth_flag <= 1;
 //            else
 //                rdboth_flag <= 0;
-            select_channel <= desc_cmd[CMD_CH_BIT_E:CMD_CH_BIT_S];
+            select_channel_tmp <= desc_cmd_tmp[CMD_CH_BIT_E:CMD_CH_BIT_S];
             descfifo_rd_en <= 0;
         end
         DISP_S2MM_CHECK: begin
@@ -297,11 +307,22 @@ begin
         
         DISP_S2MM_START:  begin
 			s2mm_start <= 1;
+			desc_inaddr <= desc_inaddr_tmp;
+            desc_outaddr <= desc_outaddr_tmp;
+            desc_cmd <= desc_cmd_tmp;
+            desc_addr <= desc_addr_tmp;
+            select_channel <= select_channel_tmp;
 		end
 		
 		
         DISP_MM2S_START: begin
 			mm2s_start <= 1;
+			
+			desc_inaddr <= desc_inaddr_tmp;
+            desc_outaddr <= desc_outaddr_tmp;
+            desc_cmd <= desc_cmd_tmp;
+            desc_addr <= desc_addr_tmp;
+            select_channel <= select_channel_tmp;
 		end
 
 
@@ -416,7 +437,7 @@ begin
         S2MM_CLR_IRQ_CHECK:
             if (single_read_data & 32'h4000)
                 next_s2mm_state <= S2MM_ERROR;
-            else if (!irq_s2mm_in && !s2mm_dma_ready[select_channel])
+            else if (!irq_s2mm_in)// && !s2mm_dma_ready[select_channel])
                 next_s2mm_state <= S2MM_SEND_IRQ;
             else
                 next_s2mm_state <= S2MM_CLR_IRQ_CHECK;
@@ -454,7 +475,7 @@ begin
         S2MM_IDLE: begin
             s2mm_done <= 0;
             axis_aclken <= 0;
-            axis_tdest_s2mm <= 16'hffff;
+            //axis_tdest_s2mm <= 16'hffff;
             s2mm_working <= 0;
         end
 

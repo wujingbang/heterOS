@@ -42,11 +42,12 @@
         output wire [3:0] axis_tdest_0,
         output wire [DEVICE_NUMBER-1:0] axis_suppress_0,
         output wire axis_aclken_0,
-        
+        output wire s2mm_working_0,
+
         input wire [DEVICE_NUMBER-1:0] mm2s_dma_valid,
         input wire [DEVICE_NUMBER-1:0] s2mm_dma_ready,
         
-        (*mark_debug = "true"*)input wire [DEVICE_NUMBER-1:0] rd_channel_valid,
+        input wire [DEVICE_NUMBER-1:0] rd_channel_valid,
         
 //        input wire irq_s2mm_in_1,
 //        input wire irq_mm2s_in_1,
@@ -250,6 +251,7 @@
         .axis_tdest_mm2s(axis_tdest_0),
         .axis_suppress(axis_suppress_0),
         .axis_aclken(axis_aclken_0),
+        .s2mm_working(s2mm_working_0),
         //.resetn_out(dma_resetn_out_0),
         
         .rd_channel_valid(rd_channel_valid),

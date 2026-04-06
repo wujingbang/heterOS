@@ -44,6 +44,7 @@
         
         output wire [DEVICE_NUMBER-1:0] axis_suppress,
         output wire axis_aclken,
+        output wire s2mm_working,
                 
 		// Ports of Axi Slave Bus Interface S00_AXI
         input wire  s00_axi_aclk,
@@ -124,19 +125,22 @@
     //descpriptor fifo
     (*mark_debug = "true"*)wire descfifo_wr_en;
     wire descfifo_full;
-    (*mark_debug = "true"*)wire [31:0] descfifo_din;
+    wire [127:0] descfifo_din;
     (*mark_debug = "true"*)wire descfifo_rd_en;
     wire descfifo_empty;
     (*mark_debug = "true"*)wire descfifo_valid;
-    (*mark_debug = "true"*)wire [127:0] descfifo_dout;
+    wire [127:0] descfifo_dout;
+    (*mark_debug = "true"*)wire [4:0] desc_fifo_rdcount;
     
     (*mark_debug = "true"*)wire descfifo_trans_wr_en;
     wire descfifo_trans_full;
-    (*mark_debug = "true"*)wire [127:0] descfifo_trans_din;
+    wire [127:0] descfifo_trans_din;
     (*mark_debug = "true"*)wire descfifo_trans_rd_en;
     wire descfifo_trans_empty;
     (*mark_debug = "true"*)wire descfifo_trans_valid;
-    (*mark_debug = "true"*)wire [127:0] descfifo_trans_dout;
+    wire [127:0] descfifo_trans_dout;
+    
+    (*mark_debug = "true"*)wire [4:0] trans_fifo_count;
     
     reg [15:0] axis_channel_en;
     wire [15:0] axis_tdest_s2mm;
@@ -195,8 +199,8 @@
       .rd_en(descfifo_rd_en),            // input wire rd_en
       .dout(descfifo_dout),              // output wire [31 : 0] dout
       .empty(descfifo_empty),
-      .valid(descfifo_valid)            // output wire valid
-      //.data_count(FIFORX_COUNT)
+      .valid(descfifo_valid),            // output wire valid
+      .data_count(desc_fifo_rdcount)
       //.wr_data_count(input_fifo_a1_wrcount),
       //.rd_data_count(input_fifo_a1_rdcount)
     );
@@ -210,8 +214,8 @@
       .rd_en(descfifo_trans_rd_en),            // input wire rd_en
       .dout(descfifo_trans_dout),              // output wire [31 : 0] dout
       .empty(descfifo_trans_empty),
-      .valid(descfifo_trans_valid)            // output wire valid
-      //.data_count(FIFORX_COUNT)
+      .valid(descfifo_trans_valid),            // output wire valid
+      .data_count(trans_fifo_count)
       //.wr_data_count(input_fifo_a1_wrcount),
       //.rd_data_count(input_fifo_a1_rdcount)
     );
@@ -231,6 +235,7 @@
         .axis_aclken(axis_aclken),
         .axis_tdest_mm2s(axis_tdest_mm2s),
         .axis_tdest_s2mm(axis_tdest_s2mm),
+        .s2mm_working(s2mm_working),
         .descfifo_rd_en(descfifo_rd_en), 
         .descfifo_dout(descfifo_dout),
         .descfifo_empty(descfifo_empty),

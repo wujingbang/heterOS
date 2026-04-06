@@ -18,6 +18,8 @@
         input wire s01_suppress,
         input wire s02_suppress,
         
+        input wire s2mm_working,
+        
         output wire s00_valid,
         output wire s01_valid,
         output wire s02_valid,
@@ -136,9 +138,9 @@
     );
     
     assign TREADY_OUT_S = !FIFO_FULL;
-	assign s00_valid = s00_axis_tvalid;
-    assign s01_valid = s01_axis_tvalid;
-    assign s02_valid = s02_axis_tvalid;
+	assign s00_valid = s00_axis_tvalid || fifo_valid_0;
+    assign s01_valid = s01_axis_tvalid || fifo_valid_1;
+    assign s02_valid = s02_axis_tvalid || fifo_valid_2;
     
     always @ (posedge axis_aclk)
     begin
@@ -235,6 +237,7 @@
     ) output_stream_inst (
         .aclk(axis_aclk),
         .resetn(axis_aresetn),
+        .s2mm_working(s2mm_working),
         .m_axis_tdata(m00_axis_tdata),             // AXI4-Stream data
         .m_axis_tvalid(m00_axis_tvalid),            // AXI4-Stream valid 
         .m_axis_tready(m00_axis_tready),            // AXI4-Stream ready 

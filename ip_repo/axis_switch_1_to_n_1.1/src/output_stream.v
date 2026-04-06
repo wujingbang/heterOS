@@ -26,7 +26,7 @@ module output_stream#(
 )(
         input  wire aclk,
         input  wire resetn,
-
+        input wire s2mm_working,
         // Ports of Axi Master Bus Interface M00_AXIS
         output wire [AXIS_TDATA_WIDTH-1:0] m_axis_tdata,             // AXI4-Stream data
         output wire m_axis_tvalid,            // AXI4-Stream valid 
@@ -66,12 +66,36 @@ module output_stream#(
 //    begin
 //     VALID_OUT = fifo_valid;
 //    end
-    
+    (*mark_debug = "true"*)reg [1:0] mode;
+    (*mark_debug = "true"*)reg stop_s2mm;
+    always @(posedge aclk)
+    begin
+        if (resetn == 0) begin
+            mode <= 0;
+            stop_s2mm <= 0;
+        end else begin
+            if (mode == 0) begin
+                if (m_axis_tlast) begin
+                    stop_s2mm <= 1;
+                    mode <= 1;
+                end
+            end else if (mode == 1) begin
+                if (!s2mm_working) begin//wait a s2mm transfer is done
+                    mode <= 2;
+                end
+            end else if (mode == 2) begin
+                stop_s2mm <= 0;
+                mode <= 0;
+            end
+        end
+    end
     always @(*)
     begin
-//        if (resetn == 0) begin
-//            fifo_rd_en = 0;
-//        end else begin
+        if (resetn == 0 || stop_s2mm == 1 || !s2mm_working) begin
+            fifo_rd_en = 0;
+            VALID_OUT = 0;
+            m_axis_tlast = 0;
+        end else begin
             if (fifo_valid && READY_IN) begin
                 fifo_rd_en = 1;
                 TDATA_OUT = fifo_dout[AXIS_TDATA_WIDTH-1:0];
@@ -83,7 +107,7 @@ module output_stream#(
                 VALID_OUT = 0;
                 m_axis_tlast = 0;
             end
-//        end
+        end
     end
     
 //    always @ (*)
